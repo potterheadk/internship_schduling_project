@@ -1,0 +1,184 @@
+==============================
+Table: user
+==============================
+
+Column: id
+------------------------------
+8
+4
+12
+18
+13
+7
+5
+9
+15
+16
+19
+2
+17
+3
+11
+6
+1
+10
+
+Column: nombre
+------------------------------
+ti
+Luis
+Marcelo 
+Christian 
+Ito 
+Roxana 
+Freud 
+Carlos 
+Jhonnel 
+Wester 
+Roger 
+Coordinación 
+Enzo
+Juan
+karina
+mabel 
+Default
+Nachiket
+
+Column: apellido
+------------------------------
+ti
+Luyo
+Gonzales
+Pérez
+Flores
+Purizaca
+Melgar
+Villalta
+Samaniego
+Zela 
+Albornoz Esteban 
+Académica
+Medina
+Tovar
+popuche
+huaman
+india
+Kulkarni
+
+Column: genero
+------------------------------
+M
+F
+
+Column: grado
+------------------------------
+tec
+Director
+Direcctor
+Decano
+Director de marketing
+Profesor
+Profesora
+coa
+In
+Founder
+
+Column: estado
+------------------------------
+A
+
+Column: email
+------------------------------
+carlos.villalta@uma.edu.pe
+christian.perez@uma.edu.pe
+coa@uma.edu.pe
+default@uma.edu.pe
+enzo.medina@uma.edu.pe
+freud.melgar@uma.edu.pe
+ito.flores@uma.edu.pe
+jhonnel.samaniego@uma.edu.pe
+juan.tovar@uma.edu.pe
+karina.popuche@uma.edu.pe
+kulkarninachiket3699@gmail.com
+luis.luyo@uma.edu.pe
+mabel.huaman@uma.edu.pe
+marcelo.gonzales@uma.edu.pe
+roger.albornoz@uma.edu.pe
+roxana.purizaca@uma.edu.pe
+ti@uma.edu.pe
+wester.zela@uma.edu.pe
+
+Column: password
+------------------------------
+$argon2id$v=19$m=65536,t=3,p=4$39haPqKPDAWBaCAOaudVuA$IaeBNjUp7UsL6wU6TuEsLf0grYgacAqRNpZqE0mL/Sw
+$argon2id$v=19$m=65536,t=3,p=4$0EzBQwxAXrbjL48BobNPQA$JXx0/zkTTGoiB/95omZuNhoni2ykDuyNB20n+n5iuas
+$argon2id$v=19$m=65536,t=3,p=4$YFmkDpHPUddKIfjCZrjIoA$KJSo9as0fXvSxzqGWCAi6t1XSWz2d6YW6ttg6JEQj70
+$argon2id$v=19$m=65536,t=3,p=4$fPeKL8R8tC75OZEUzUFU1Q$ln+IJugt+Mhes83ElD+DEtSb+mj20P0EsaQNoT0u1t0
+$argon2id$v=19$m=65536,t=3,p=4$+J3PGcD/4HdD7vgyNerkvQ$KaU5nYgOgwCIJ8Foxmo1RFgFkvFKNHy6C88dRr4EtEQ
+$argon2id$v=19$m=65536,t=3,p=4$9BzBDLKeBf00O/bnnse/+g$bDkw1ZJHpJBtJ1KfwQFfWIf97PLVJ9HmVhoJAwn5Btg
+$argon2id$v=19$m=65536,t=3,p=4$3uYkolYYarxZ7k8DM2xwiw$DSWyinvEwpEA1/FoSk9GLJKGpsTktaFuxD1j4bTyqmM
+$argon2id$v=19$m=65536,t=3,p=4$OtC1VXdwFiAHDsg807WD5Q$QaY7b/ZCP92Y/hZrf18NQSCOvPUF+NRS4CPvtng5xes
+$argon2id$v=19$m=65536,t=3,p=4$YJ5tWI3xsgZHcIBydlrd4w$INIeJrNM4jpiyZIcORI7pkAw1bNin3uxXejdKkXq7Vo
+$argon2id$v=19$m=65536,t=3,p=4$JKbGDHKV9tOxPl7e1+154w$pCyr98ml+ApR3E4AOZMhepSfBgDz82jm3lfJYNb/K6U
+$argon2id$v=19$m=65536,t=3,p=4$Gcvn0OOQst4j+IO7GTw99A$te2pUs3FueITuI1aD/VsVASVwiJuUQN8oWMKu/QmfgA
+$argon2id$v=19$m=65536,t=3,p=4$K0lk6mEUKugmR8yfe7Oz+Q$PCH4P0EswMptGiADW2Fbqxv9QDuFnSZWbtYVe/tsD44
+$argon2id$v=19$m=65536,t=3,p=4$fKO2VMhMW+4UskiyuEuejA$IOIdRWgZG9BqeHu+SiZkuxrXxxtpOAsCtdsco+6vHzk
+$argon2id$v=19$m=65536,t=3,p=4$6ckA76Y6hoGfRFMNUhSxzA$BKboQmivEPR9RYKJt66Dx1nmtisAXby5YiVuiQHnLVo
+$argon2id$v=19$m=65536,t=3,p=4$A6r+hMKknSUOGhjoloPaQw$iXfUNkTlB2pfg3xXSEjsELGwzI3QSzNRQMyht+/qlIA
+$argon2id$v=19$m=65536,t=3,p=4$nftrno7LJsFatUDkARbirA$5ZjhhMZh40mCQrtTWtWUGWtPjRVwmZYyWyg9PI1JklI
+$argon2id$v=19$m=65536,t=3,p=4$gS+T0qQNJ3uA/d7+hqPRiA$TUNF7fkGXCXMhHBgA8RqKlFiCMunuB8SEh3za+K6WRw
+$argon2id$v=19$m=65536,t=3,p=4$+v6DbkNEGNQYh7QvNYH7bg$2SLpeou5MzKe2IddTu2asi6D2Snm47SkYLxenSNvF/A
+
+Column: googleId
+------------------------------
+NULL
+
+Column: microsoftId
+------------------------------
+NULL
+
+Column: authProvider
+------------------------------
+LOCAL
+
+Column: createdAt
+------------------------------
+2025-05-29 20:28:52.770
+2025-05-29 20:34:03.103
+2025-05-29 20:34:42.801
+2025-05-29 20:35:15.572
+2025-05-29 20:35:47.126
+2025-05-29 20:36:52.630
+2025-05-29 20:37:47.004
+2025-05-29 20:38:33.924
+2025-05-29 20:39:39.044
+2025-05-29 20:40:14.029
+2025-05-29 20:41:15.960
+2025-05-29 20:41:59.796
+2025-05-31 17:59:50.156
+2025-06-04 21:52:34.903
+2025-07-18 21:18:50.525
+2025-08-04 17:15:01.143
+2025-08-29 14:20:20.442
+2025-09-05 18:09:34.358
+
+Column: updatedAt
+------------------------------
+2025-05-29 20:28:52.770
+2025-05-29 20:34:03.103
+2025-05-29 20:34:42.801
+2025-05-29 20:35:15.572
+2025-05-29 20:35:47.126
+2025-05-29 20:36:52.630
+2025-05-29 20:37:47.004
+2025-05-29 20:38:33.924
+2025-06-27 17:49:25.996
+2025-05-29 20:40:14.029
+2025-05-29 20:41:15.960
+2025-05-29 20:41:59.796
+2025-05-31 17:59:50.156
+2025-06-04 21:52:34.903
+2025-07-18 21:18:50.525
+2025-08-04 17:15:01.143
+2025-08-29 14:20:20.442
+2025-09-05 18:09:34.358

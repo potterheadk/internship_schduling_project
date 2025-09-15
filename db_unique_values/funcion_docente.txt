@@ -1,0 +1,25 @@
+==============================
+Table: funcion_docente
+==============================
+
+Column: id
+------------------------------
+0
+1
+2
+3
+4
+5
+6
+7
+
+Column: descripcion
+------------------------------
+NO APLICA
+JEFE DE PRÁCTICA
+JEFE DE PRÁCTICA (TC)
+Director/Decano/VRA
+TIEMPO PARCIAL
+TIEMPO COMPLETO
+JEFE/COORDINADOR
+JEFE DE PRÁCTICA (Administrativo)

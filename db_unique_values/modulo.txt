@@ -1,0 +1,40 @@
+==============================
+Table: modulo
+==============================
+
+Column: id
+------------------------------
+1
+2
+3
+4
+
+Column: nombre
+------------------------------
+Gestión Usuario
+Asignar Horarios COA
+Asignar Horarios Director
+Docente
+
+Column: codigo
+------------------------------
+1
+2
+3
+4
+
+Column: icono
+------------------------------
+NULL
+
+Column: estado
+------------------------------
+A
+
+Column: createdAt
+------------------------------
+2025-05-30 01:58:53
+
+Column: updatedAt
+------------------------------
+2025-05-30 01:58:53
