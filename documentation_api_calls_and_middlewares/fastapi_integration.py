@@ -64,9 +64,9 @@ class ScheduleOptimizationRules(BaseModel):
     lunch_break_duration: int = 60  # minutes
 
 # Helper functions
-async def fetch_from_nest(endpoint: str, method: str = "GET", data: Dict = None) -> Dict:
+async def fetch_from_nest(endpoint: str, method: str = "GET", data: Dict = None, params: Dict = None) -> Dict:
     """Fetch data from NestJS backend with caching."""
-    cache_key = f"{method}:{endpoint}:{str(data)}"
+    cache_key = f"{method}:{endpoint}:{str(data)}:{str(params)}"
     
     if method == "GET" and cache_key in cache:
         return cache[cache_key]
@@ -74,7 +74,7 @@ async def fetch_from_nest(endpoint: str, method: str = "GET", data: Dict = None)
     async with httpx.AsyncClient() as client:
         try:
             if method == "GET":
-                response = await client.get(f"{NEST_API_URL}{endpoint}")
+                response = await client.get(f"{NEST_API_URL}{endpoint}", params=params)
             else:
                 response = await client.post(f"{NEST_API_URL}{endpoint}", json=data)
             
@@ -84,9 +84,16 @@ async def fetch_from_nest(endpoint: str, method: str = "GET", data: Dict = None)
             if method == "GET":
                 cache[cache_key] = result
             
+            if not result:
+                return [] if endpoint.startswith("/docente") or endpoint.startswith("/aula") else {}
+            
             return result
         except httpx.HTTPError as e:
-            raise HTTPException(status_code=e.response.status_code, detail=str(e))
+            print(f"Error calling {endpoint}: {str(e)}")
+            return [] if endpoint.startswith("/docente") or endpoint.startswith("/aula") else {}
+        except Exception as e:
+            print(f"Unexpected error calling {endpoint}: {str(e)}")
+            return [] if endpoint.startswith("/docente") or endpoint.startswith("/aula") else {}
 
 def optimize_schedule(schedule: Dict, rules: ScheduleOptimizationRules) -> Dict:
     """Apply schedule optimization rules."""
@@ -142,49 +149,92 @@ async def get_schedule_summary(
     - filters: Standard schedule filters (period, faculty, etc.)
     - include_stats: Include additional statistics about schedules
     """
-    # Build query parameters
-    params = {k: v for k, v in filters.dict().items() if v is not None}
-    
-    # Fetch data from multiple endpoints in parallel
-    async with asyncio.TaskGroup() as group:
-        tasks = {
-            "turns": group.create_task(fetch_from_nest("/turno", params=params)),
-            "courses": group.create_task(fetch_from_nest("/horario/curso", params=params)),
-            "teachers": group.create_task(fetch_from_nest("/docente")),
-            "classrooms": group.create_task(fetch_from_nest("/aula")),
-            "dashboard": group.create_task(fetch_from_nest("/dashboard/1")) if include_stats else None
-        }
-    
-    # Process results
-    results = {k: v.result() for k, v in tasks.items() if v is not None}
-    
-    # Calculate schedule statistics
-    if include_stats:
-        dashboard_data = results.pop("dashboard", {})
-        stats = {
-            "classroom_utilization": calculate_classroom_utilization(results["classrooms"], results["courses"]),
-            "teacher_load": calculate_teacher_load(results["teachers"], results["courses"]),
-            "schedule_distribution": calculate_schedule_distribution(results["courses"]),
-            "dashboard_metrics": dashboard_data
-        }
-    else:
+    try:
+        # Build query parameters
+        params = {k: v for k, v in filters.dict().items() if v is not None}
+        
+        # Fetch data sequentially for better error handling
+        results = {}
+        try:
+            results["turns"] = await fetch_from_nest("/turno", params=params)
+            if not isinstance(results["turns"], list):
+                results["turns"] = []
+        except Exception as e:
+            print(f"Error fetching turns: {str(e)}")
+            results["turns"] = []
+            
+        try:
+            results["courses"] = await fetch_from_nest("/horario/curso", params=params)
+            if not isinstance(results["courses"], list):
+                results["courses"] = []
+        except Exception as e:
+            print(f"Error fetching courses: {str(e)}")
+            results["courses"] = []
+            
+        try:
+            results["teachers"] = await fetch_from_nest("/docente")
+            if not isinstance(results["teachers"], list):
+                results["teachers"] = []
+        except Exception as e:
+            print(f"Error fetching teachers: {str(e)}")
+            results["teachers"] = []
+            
+        try:
+            results["classrooms"] = await fetch_from_nest("/aula")
+            if not isinstance(results["classrooms"], list):
+                results["classrooms"] = []
+        except Exception as e:
+            print(f"Error fetching classrooms: {str(e)}")
+            results["classrooms"] = []
+        
+        # Calculate schedule statistics
         stats = {}
-    
-    # Generate summary with pagination info if available
-    summary = {
-        "total_turns": len(results["turns"]),
-        "total_courses": len(results["courses"]),
-        "total_teachers": len(results["teachers"]),
-        "total_classrooms": len(results["classrooms"]),
-        "page": filters.page,
-        "limit": filters.limit,
-        "data": results
-    }
-    
-    if include_stats:
-        summary["statistics"] = stats
-    
-    return summary
+        if include_stats:
+            try:
+                dashboard = await fetch_from_nest("/dashboard/1")
+                stats = {
+                    "classroom_utilization": calculate_classroom_utilization(results["classrooms"], results["courses"]),
+                    "teacher_load": calculate_teacher_load(results["teachers"], results["courses"]),
+                    "schedule_distribution": calculate_schedule_distribution(results["courses"]),
+                    "dashboard_metrics": dashboard if isinstance(dashboard, dict) else {}
+                }
+            except Exception as e:
+                print(f"Error calculating stats: {str(e)}")
+                stats = {
+                    "classroom_utilization": {"utilization_rate": 0.0},
+                    "teacher_load": {"average_hours": 0.0},
+                    "schedule_distribution": {"distribution": {}},
+                    "dashboard_metrics": {}
+                }
+        
+        # Generate summary
+        summary = {
+            "total_turns": len(results.get("turns", [])),
+            "total_courses": len(results.get("courses", [])),
+            "total_teachers": len(results.get("teachers", [])),
+            "total_classrooms": len(results.get("classrooms", [])),
+            "page": filters.page,
+            "limit": filters.limit,
+            "data": results
+        }
+        
+        if include_stats:
+            summary["statistics"] = stats
+        
+        return summary
+        
+    except Exception as e:
+        print(f"Error in get_schedule_summary: {str(e)}")
+        return {
+            "total_turns": 0,
+            "total_courses": 0,
+            "total_teachers": 0,
+            "total_classrooms": 0,
+            "page": filters.page,
+            "limit": filters.limit,
+            "data": {"turns": [], "courses": [], "teachers": [], "classrooms": []},
+            "error": str(e)
+        }
 
 @app.get("/api/teachers")
 async def get_teachers(
@@ -198,35 +248,53 @@ async def get_teachers(
     - filters: Teacher-specific filters
     - include_stats: Include teaching statistics
     """
-    # Build query parameters for teachers
-    params = {}
-    if filters.c_codfac:
-        params["c_codfac"] = filters.c_codfac
-    if filters.c_codesp:
-        params["c_codesp"] = filters.c_codesp
-    
-    # Include additional data based on filters
-    params["horario"] = filters.include_schedule
-    params["curso"] = filters.include_courses
-    params["aula"] = filters.include_classrooms
-    
-    # Fetch teacher data
-    teachers = await fetch_from_nest("/docente", params=params)
-    
-    if include_stats:
-        # Fetch and calculate statistics
-        courses = await fetch_from_nest("/horario/curso")
-        stats = {
-            "teaching_hours": calculate_teaching_hours(teachers, courses),
-            "course_distribution": calculate_course_distribution(teachers, courses),
-            "specialization_areas": analyze_specialization_areas(teachers)
+    try:
+        # Build query parameters for teachers
+        params = {
+            "c_codfac": filters.c_codfac,
+            "c_codesp": filters.c_codesp,
+            "include_horario": filters.include_schedule,
+            "include_curso": filters.include_courses,
+            "include_aula": filters.include_classrooms
         }
+        
+        # Remove None values
+        params = {k: v for k, v in params.items() if v is not None}
+        
+        # Fetch teacher data
+        teachers = await fetch_from_nest("/docente", params=params)
+        
+        if not isinstance(teachers, list):
+            teachers = []
+            
+        if include_stats:
+            # Fetch courses for statistics
+            courses = await fetch_from_nest("/horario/curso")
+            if not isinstance(courses, list):
+                courses = []
+                
+            stats = {
+                "teaching_hours": calculate_teaching_hours(teachers, courses),
+                "course_distribution": calculate_course_distribution(teachers, courses),
+                "specialization_areas": analyze_specialization_areas(teachers)
+            }
+            return {
+                "total": len(teachers),
+                "teachers": teachers,
+                "statistics": stats
+            }
+        
         return {
-            "teachers": teachers,
-            "statistics": stats
+            "total": len(teachers),
+            "teachers": teachers
         }
-    
-    return {"teachers": teachers}
+    except Exception as e:
+        print(f"Error in get_teachers: {str(e)}")
+        return {
+            "total": 0,
+            "teachers": [],
+            "error": str(e)
+        }
 
 @app.get("/api/classrooms")
 async def get_classrooms(filters: ClassroomFilter = Depends()) -> Dict:
@@ -236,28 +304,56 @@ async def get_classrooms(filters: ClassroomFilter = Depends()) -> Dict:
     Parameters:
     - filters: Classroom-specific filters
     """
-    # Build base query parameters
-    params = {
-        "horario": filters.include_schedule,
-        "docente": filters.include_teachers
-    }
-    
-    # Fetch classroom data
-    classrooms = await fetch_from_nest("/aula", params=params)
-    
-    # Apply additional filters
-    filtered_classrooms = [
-        room for room in classrooms
-        if (not filters.building or room.get("pabellon") == filters.building) and
-           (not filters.floor or room.get("n_piso") == filters.floor) and
-           (not filters.capacity_min or int(room.get("n_capacidad", 0)) >= filters.capacity_min) and
-           (not filters.capacity_max or int(room.get("n_capacidad", 0)) <= filters.capacity_max)
-    ]
-    
-    return {
-        "total": len(filtered_classrooms),
-        "classrooms": filtered_classrooms
-    }
+    try:
+        # Build base query parameters
+        params = {
+            "include_horario": filters.include_schedule,
+            "include_docente": filters.include_teachers
+        }
+        
+        # Fetch classroom data
+        classrooms = await fetch_from_nest("/aula", params=params)
+        
+        if not isinstance(classrooms, list):
+            classrooms = []
+        
+        # Apply additional filters
+        filtered_classrooms = []
+        for room in classrooms:
+            try:
+                # Safe type conversion and null checks
+                room_capacity = int(str(room.get("n_capacidad", "0")).strip() or "0")
+                room_floor = int(str(room.get("n_piso", "0")).strip() or "0")
+                room_building = str(room.get("pabellon", "")).strip().upper()
+                
+                if filters.building and room_building != str(filters.building).strip().upper():
+                    continue
+                    
+                if filters.floor is not None and room_floor != filters.floor:
+                    continue
+                    
+                if filters.capacity_min is not None and room_capacity < filters.capacity_min:
+                    continue
+                    
+                if filters.capacity_max is not None and room_capacity > filters.capacity_max:
+                    continue
+                    
+                filtered_classrooms.append(room)
+            except (ValueError, TypeError) as e:
+                print(f"Error processing room {room.get('id', 'unknown')}: {str(e)}")
+                continue
+        
+        return {
+            "total": len(filtered_classrooms),
+            "classrooms": filtered_classrooms
+        }
+    except Exception as e:
+        print(f"Error in get_classrooms: {str(e)}")
+        return {
+            "total": 0,
+            "classrooms": [],
+            "error": str(e)
+        }
 
 # Helper functions for statistics
 def calculate_classroom_utilization(classrooms: List[Dict], courses: List[Dict]) -> Dict:
