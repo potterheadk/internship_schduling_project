@@ -1,0 +1,16 @@
+{
+  "name": "api_calls_documents",
+  "version": "1.0.0",
+  "description": "",
+  "main": "generate_routes.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "glob": "^11.0.3"
+  }
+}
