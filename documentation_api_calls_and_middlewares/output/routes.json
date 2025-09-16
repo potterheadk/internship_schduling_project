@@ -1,0 +1,984 @@
+[
+  {
+    "module": "user",
+    "controllerFile": "../../nest_docente/src/modules/user/user.controller.ts",
+    "controllerBase": "user",
+    "method": "GET",
+    "routePath": "/",
+    "fullPath": "/user",
+    "decoratorLine": "@Get('')",
+    "dtoFilesReferenced": [],
+    "pathParams": [],
+    "pathParamPattern": null,
+    "methodName": "getUsuarios",
+    "frontendCallers": [
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/turno.service.ts",
+        "method": "DELETE",
+        "methodName": "createTurno",
+        "url": "${this.apiUrl}/${id}",
+        "line": 34,
+        "bodyKeys": [],
+        "snippet": "this.http.delete(`${this.apiUrl}/${id}`, { withCredentials: true })"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/turno.service.ts",
+        "method": "PUT",
+        "methodName": "createTurno",
+        "url": "${this.apiUrl}/${id}",
+        "line": 38,
+        "bodyKeys": [
+          "estado"
+        ],
+        "snippet": "this.http.put(\n      `${this.apiUrl}/${id}`,\n      { estado },\n      { withCredentials: true }\n    )"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/periodo.service.ts",
+        "method": "PUT",
+        "methodName": "createPeriodo",
+        "url": "${this.apiUrl}/${n_codper}",
+        "line": 28,
+        "bodyKeys": [
+          "f_cierre"
+        ],
+        "snippet": "this.http.put(\n      `${this.apiUrl}/${n_codper}`,\n      { f_cierre },\n      {\n        withCredentials: true,\n      }\n    )"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/horario.service.ts",
+        "method": "POST",
+        "methodName": "unknown",
+        "url": "${this.apiUrl}",
+        "line": 22,
+        "bodyKeys": [],
+        "snippet": "this.http.post(`${this.apiUrl}`, data, { withCredentials: true })"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/horario.service.ts",
+        "method": "PUT",
+        "methodName": "unknown",
+        "url": "${this.apiUrl}",
+        "line": 32,
+        "bodyKeys": [],
+        "snippet": "this.http.put(`${this.apiUrl}`, data, { withCredentials: true })"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/docente.service.ts",
+        "method": "PATCH",
+        "methodName": "unknown",
+        "url": "${this.apiUrl}/docente/updateuser",
+        "line": 40,
+        "bodyKeys": [],
+        "snippet": "this.http.patch(`${this.apiUrl}/docente/updateuser`, docenteData)"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/disponibilidad-horaria.service.ts",
+        "method": "POST",
+        "methodName": "getTokenHeader",
+        "url": "${this.apiUrl}",
+        "line": 26,
+        "bodyKeys": [
+          "disponibilidad"
+        ],
+        "snippet": "this.http.post(`${this.apiUrl}`, {disponibilidad}, this.getTokenHeader() )"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/disponibilidad-horaria.service.ts",
+        "method": "GET",
+        "methodName": "getTokenHeader",
+        "url": "${this.apiUrl}/user",
+        "line": 30,
+        "bodyKeys": [],
+        "snippet": "this.http.get(`${this.apiUrl}/user`, this.getTokenHeader())"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/disponibilidad-horaria.service.ts",
+        "method": "PUT",
+        "methodName": "getTokenHeader",
+        "url": "${this.apiUrl}/${id}",
+        "line": 34,
+        "bodyKeys": [],
+        "snippet": "this.http.put(`${this.apiUrl}/${id}`, disponibilidad, this.getTokenHeader())"
+      }
+    ],
+    "curl": "curl -sS -H \"Authorization: Bearer $TOKEN\" 'http://localhost:3000/user' | jq ."
+  },
+  {
+    "module": "sigu",
+    "controllerFile": "../../nest_docente/src/modules/sigu/sigu.controller.ts",
+    "controllerBase": "sigu",
+    "method": "GET",
+    "routePath": "/especialidades",
+    "fullPath": "/sigu/especialidades",
+    "decoratorLine": "@Get('especialidades')",
+    "dtoFilesReferenced": [],
+    "pathParams": [],
+    "pathParamPattern": null,
+    "methodName": "getEspecialidades",
+    "frontendCallers": [
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/turno.service.ts",
+        "method": "DELETE",
+        "methodName": "createTurno",
+        "url": "${this.apiUrl}/${id}",
+        "line": 34,
+        "bodyKeys": [],
+        "snippet": "this.http.delete(`${this.apiUrl}/${id}`, { withCredentials: true })"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/turno.service.ts",
+        "method": "PUT",
+        "methodName": "createTurno",
+        "url": "${this.apiUrl}/${id}",
+        "line": 38,
+        "bodyKeys": [
+          "estado"
+        ],
+        "snippet": "this.http.put(\n      `${this.apiUrl}/${id}`,\n      { estado },\n      { withCredentials: true }\n    )"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/periodo.service.ts",
+        "method": "PUT",
+        "methodName": "createPeriodo",
+        "url": "${this.apiUrl}/${n_codper}",
+        "line": 28,
+        "bodyKeys": [
+          "f_cierre"
+        ],
+        "snippet": "this.http.put(\n      `${this.apiUrl}/${n_codper}`,\n      { f_cierre },\n      {\n        withCredentials: true,\n      }\n    )"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/horario.service.ts",
+        "method": "POST",
+        "methodName": "unknown",
+        "url": "${this.apiUrl}",
+        "line": 22,
+        "bodyKeys": [],
+        "snippet": "this.http.post(`${this.apiUrl}`, data, { withCredentials: true })"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/horario.service.ts",
+        "method": "PUT",
+        "methodName": "unknown",
+        "url": "${this.apiUrl}",
+        "line": 32,
+        "bodyKeys": [],
+        "snippet": "this.http.put(`${this.apiUrl}`, data, { withCredentials: true })"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/disponibilidad-horaria.service.ts",
+        "method": "POST",
+        "methodName": "getTokenHeader",
+        "url": "${this.apiUrl}",
+        "line": 26,
+        "bodyKeys": [
+          "disponibilidad"
+        ],
+        "snippet": "this.http.post(`${this.apiUrl}`, {disponibilidad}, this.getTokenHeader() )"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/disponibilidad-horaria.service.ts",
+        "method": "PUT",
+        "methodName": "getTokenHeader",
+        "url": "${this.apiUrl}/${id}",
+        "line": 34,
+        "bodyKeys": [],
+        "snippet": "this.http.put(`${this.apiUrl}/${id}`, disponibilidad, this.getTokenHeader())"
+      }
+    ],
+    "curl": "curl -sS -H \"Authorization: Bearer $TOKEN\" 'http://localhost:3000/sigu/especialidades' | jq ."
+  },
+  {
+    "module": "sigu",
+    "controllerFile": "../../nest_docente/src/modules/sigu/sigu.controller.ts",
+    "controllerBase": "sigu",
+    "method": "GET",
+    "routePath": "/carreras-ciclo",
+    "fullPath": "/sigu/carreras-ciclo",
+    "decoratorLine": "@Get('/carreras-ciclo')",
+    "dtoFilesReferenced": [],
+    "pathParams": [],
+    "pathParamPattern": null,
+    "methodName": "if",
+    "frontendCallers": [
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/turno.service.ts",
+        "method": "DELETE",
+        "methodName": "createTurno",
+        "url": "${this.apiUrl}/${id}",
+        "line": 34,
+        "bodyKeys": [],
+        "snippet": "this.http.delete(`${this.apiUrl}/${id}`, { withCredentials: true })"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/turno.service.ts",
+        "method": "PUT",
+        "methodName": "createTurno",
+        "url": "${this.apiUrl}/${id}",
+        "line": 38,
+        "bodyKeys": [
+          "estado"
+        ],
+        "snippet": "this.http.put(\n      `${this.apiUrl}/${id}`,\n      { estado },\n      { withCredentials: true }\n    )"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/periodo.service.ts",
+        "method": "PUT",
+        "methodName": "createPeriodo",
+        "url": "${this.apiUrl}/${n_codper}",
+        "line": 28,
+        "bodyKeys": [
+          "f_cierre"
+        ],
+        "snippet": "this.http.put(\n      `${this.apiUrl}/${n_codper}`,\n      { f_cierre },\n      {\n        withCredentials: true,\n      }\n    )"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/horario.service.ts",
+        "method": "POST",
+        "methodName": "unknown",
+        "url": "${this.apiUrl}",
+        "line": 22,
+        "bodyKeys": [],
+        "snippet": "this.http.post(`${this.apiUrl}`, data, { withCredentials: true })"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/horario.service.ts",
+        "method": "PUT",
+        "methodName": "unknown",
+        "url": "${this.apiUrl}",
+        "line": 32,
+        "bodyKeys": [],
+        "snippet": "this.http.put(`${this.apiUrl}`, data, { withCredentials: true })"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/disponibilidad-horaria.service.ts",
+        "method": "POST",
+        "methodName": "getTokenHeader",
+        "url": "${this.apiUrl}",
+        "line": 26,
+        "bodyKeys": [
+          "disponibilidad"
+        ],
+        "snippet": "this.http.post(`${this.apiUrl}`, {disponibilidad}, this.getTokenHeader() )"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/disponibilidad-horaria.service.ts",
+        "method": "PUT",
+        "methodName": "getTokenHeader",
+        "url": "${this.apiUrl}/${id}",
+        "line": 34,
+        "bodyKeys": [],
+        "snippet": "this.http.put(`${this.apiUrl}/${id}`, disponibilidad, this.getTokenHeader())"
+      }
+    ],
+    "curl": "curl -sS -H \"Authorization: Bearer $TOKEN\" 'http://localhost:3000/sigu/carreras-ciclo' | jq ."
+  },
+  {
+    "module": "sigu",
+    "controllerFile": "../../nest_docente/src/modules/sigu/sigu.controller.ts",
+    "controllerBase": "sigu",
+    "method": "POST",
+    "routePath": "/curso",
+    "fullPath": "/sigu/curso",
+    "decoratorLine": "@Post('curso')",
+    "dtoFilesReferenced": [],
+    "pathParams": [],
+    "pathParamPattern": null,
+    "methodName": "getEquivalencias",
+    "frontendCallers": [
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/turno.service.ts",
+        "method": "DELETE",
+        "methodName": "createTurno",
+        "url": "${this.apiUrl}/${id}",
+        "line": 34,
+        "bodyKeys": [],
+        "snippet": "this.http.delete(`${this.apiUrl}/${id}`, { withCredentials: true })"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/turno.service.ts",
+        "method": "PUT",
+        "methodName": "createTurno",
+        "url": "${this.apiUrl}/${id}",
+        "line": 38,
+        "bodyKeys": [
+          "estado"
+        ],
+        "snippet": "this.http.put(\n      `${this.apiUrl}/${id}`,\n      { estado },\n      { withCredentials: true }\n    )"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/periodo.service.ts",
+        "method": "PUT",
+        "methodName": "createPeriodo",
+        "url": "${this.apiUrl}/${n_codper}",
+        "line": 28,
+        "bodyKeys": [
+          "f_cierre"
+        ],
+        "snippet": "this.http.put(\n      `${this.apiUrl}/${n_codper}`,\n      { f_cierre },\n      {\n        withCredentials: true,\n      }\n    )"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/horario.service.ts",
+        "method": "POST",
+        "methodName": "unknown",
+        "url": "${this.apiUrl}",
+        "line": 22,
+        "bodyKeys": [],
+        "snippet": "this.http.post(`${this.apiUrl}`, data, { withCredentials: true })"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/horario.service.ts",
+        "method": "PUT",
+        "methodName": "unknown",
+        "url": "${this.apiUrl}",
+        "line": 32,
+        "bodyKeys": [],
+        "snippet": "this.http.put(`${this.apiUrl}`, data, { withCredentials: true })"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/disponibilidad-horaria.service.ts",
+        "method": "POST",
+        "methodName": "getTokenHeader",
+        "url": "${this.apiUrl}",
+        "line": 26,
+        "bodyKeys": [
+          "disponibilidad"
+        ],
+        "snippet": "this.http.post(`${this.apiUrl}`, {disponibilidad}, this.getTokenHeader() )"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/disponibilidad-horaria.service.ts",
+        "method": "PUT",
+        "methodName": "getTokenHeader",
+        "url": "${this.apiUrl}/${id}",
+        "line": 34,
+        "bodyKeys": [],
+        "snippet": "this.http.put(`${this.apiUrl}/${id}`, disponibilidad, this.getTokenHeader())"
+      }
+    ],
+    "curl": "curl -sS -H \"Authorization: Bearer $TOKEN\" 'http://localhost:3000/sigu/curso' -X POST -H \"Content-Type: application/json\" -d '{ /* PLEASE FILL */ }' | jq ."
+  },
+  {
+    "module": "periodo",
+    "controllerFile": "../../nest_docente/src/modules/periodo/periodo.controller.ts",
+    "controllerBase": "periodo",
+    "method": "GET",
+    "routePath": "/",
+    "fullPath": "/periodo",
+    "decoratorLine": "@Get('')",
+    "dtoFilesReferenced": [],
+    "pathParams": [],
+    "pathParamPattern": null,
+    "methodName": "getPeriodo",
+    "frontendCallers": [
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/turno.service.ts",
+        "method": "DELETE",
+        "methodName": "createTurno",
+        "url": "${this.apiUrl}/${id}",
+        "line": 34,
+        "bodyKeys": [],
+        "snippet": "this.http.delete(`${this.apiUrl}/${id}`, { withCredentials: true })"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/turno.service.ts",
+        "method": "PUT",
+        "methodName": "createTurno",
+        "url": "${this.apiUrl}/${id}",
+        "line": 38,
+        "bodyKeys": [
+          "estado"
+        ],
+        "snippet": "this.http.put(\n      `${this.apiUrl}/${id}`,\n      { estado },\n      { withCredentials: true }\n    )"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/periodo.service.ts",
+        "method": "PUT",
+        "methodName": "createPeriodo",
+        "url": "${this.apiUrl}/${n_codper}",
+        "line": 28,
+        "bodyKeys": [
+          "f_cierre"
+        ],
+        "snippet": "this.http.put(\n      `${this.apiUrl}/${n_codper}`,\n      { f_cierre },\n      {\n        withCredentials: true,\n      }\n    )"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/horario.service.ts",
+        "method": "POST",
+        "methodName": "unknown",
+        "url": "${this.apiUrl}",
+        "line": 22,
+        "bodyKeys": [],
+        "snippet": "this.http.post(`${this.apiUrl}`, data, { withCredentials: true })"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/horario.service.ts",
+        "method": "PUT",
+        "methodName": "unknown",
+        "url": "${this.apiUrl}",
+        "line": 32,
+        "bodyKeys": [],
+        "snippet": "this.http.put(`${this.apiUrl}`, data, { withCredentials: true })"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/disponibilidad-horaria.service.ts",
+        "method": "POST",
+        "methodName": "getTokenHeader",
+        "url": "${this.apiUrl}",
+        "line": 26,
+        "bodyKeys": [
+          "disponibilidad"
+        ],
+        "snippet": "this.http.post(`${this.apiUrl}`, {disponibilidad}, this.getTokenHeader() )"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/disponibilidad-horaria.service.ts",
+        "method": "PUT",
+        "methodName": "getTokenHeader",
+        "url": "${this.apiUrl}/${id}",
+        "line": 34,
+        "bodyKeys": [],
+        "snippet": "this.http.put(`${this.apiUrl}/${id}`, disponibilidad, this.getTokenHeader())"
+      }
+    ],
+    "curl": "curl -sS -H \"Authorization: Bearer $TOKEN\" 'http://localhost:3000/periodo' | jq ."
+  },
+  {
+    "module": "docente",
+    "controllerFile": "../../nest_docente/src/modules/docente/docente.controller.ts",
+    "controllerBase": "docente",
+    "method": "GET",
+    "routePath": "/",
+    "fullPath": "/docente",
+    "decoratorLine": "@Get('')",
+    "dtoFilesReferenced": [],
+    "pathParams": [],
+    "pathParamPattern": null,
+    "methodName": "getDocentes",
+    "frontendCallers": [
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/turno.service.ts",
+        "method": "DELETE",
+        "methodName": "createTurno",
+        "url": "${this.apiUrl}/${id}",
+        "line": 34,
+        "bodyKeys": [],
+        "snippet": "this.http.delete(`${this.apiUrl}/${id}`, { withCredentials: true })"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/turno.service.ts",
+        "method": "PUT",
+        "methodName": "createTurno",
+        "url": "${this.apiUrl}/${id}",
+        "line": 38,
+        "bodyKeys": [
+          "estado"
+        ],
+        "snippet": "this.http.put(\n      `${this.apiUrl}/${id}`,\n      { estado },\n      { withCredentials: true }\n    )"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/periodo.service.ts",
+        "method": "PUT",
+        "methodName": "createPeriodo",
+        "url": "${this.apiUrl}/${n_codper}",
+        "line": 28,
+        "bodyKeys": [
+          "f_cierre"
+        ],
+        "snippet": "this.http.put(\n      `${this.apiUrl}/${n_codper}`,\n      { f_cierre },\n      {\n        withCredentials: true,\n      }\n    )"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/horario.service.ts",
+        "method": "POST",
+        "methodName": "unknown",
+        "url": "${this.apiUrl}",
+        "line": 22,
+        "bodyKeys": [],
+        "snippet": "this.http.post(`${this.apiUrl}`, data, { withCredentials: true })"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/horario.service.ts",
+        "method": "PUT",
+        "methodName": "unknown",
+        "url": "${this.apiUrl}",
+        "line": 32,
+        "bodyKeys": [],
+        "snippet": "this.http.put(`${this.apiUrl}`, data, { withCredentials: true })"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/docente.service.ts",
+        "method": "POST",
+        "methodName": "unknown",
+        "url": "${this.apiUrl}/docente",
+        "line": 19,
+        "bodyKeys": [],
+        "snippet": "this.http.post(`${this.apiUrl}/docente`, docenteData)"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/docente.service.ts",
+        "method": "PATCH",
+        "methodName": "unknown",
+        "url": "${this.apiUrl}/docente/updateuser",
+        "line": 40,
+        "bodyKeys": [],
+        "snippet": "this.http.patch(`${this.apiUrl}/docente/updateuser`, docenteData)"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/disponibilidad-horaria.service.ts",
+        "method": "POST",
+        "methodName": "getTokenHeader",
+        "url": "${this.apiUrl}",
+        "line": 26,
+        "bodyKeys": [
+          "disponibilidad"
+        ],
+        "snippet": "this.http.post(`${this.apiUrl}`, {disponibilidad}, this.getTokenHeader() )"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/disponibilidad-horaria.service.ts",
+        "method": "PUT",
+        "methodName": "getTokenHeader",
+        "url": "${this.apiUrl}/${id}",
+        "line": 34,
+        "bodyKeys": [],
+        "snippet": "this.http.put(`${this.apiUrl}/${id}`, disponibilidad, this.getTokenHeader())"
+      }
+    ],
+    "curl": "curl -sS -H \"Authorization: Bearer $TOKEN\" 'http://localhost:3000/docente' | jq ."
+  },
+  {
+    "module": "dashboard",
+    "controllerFile": "../../nest_docente/src/modules/dashboard/dashboard.controller.ts",
+    "controllerBase": "dashboard",
+    "method": "GET",
+    "routePath": "/1",
+    "fullPath": "/dashboard/1",
+    "decoratorLine": "@Get('1')",
+    "dtoFilesReferenced": [],
+    "pathParams": [],
+    "pathParamPattern": null,
+    "methodName": "dash_Docente",
+    "frontendCallers": [
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/turno.service.ts",
+        "method": "DELETE",
+        "methodName": "createTurno",
+        "url": "${this.apiUrl}/${id}",
+        "line": 34,
+        "bodyKeys": [],
+        "snippet": "this.http.delete(`${this.apiUrl}/${id}`, { withCredentials: true })"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/turno.service.ts",
+        "method": "PUT",
+        "methodName": "createTurno",
+        "url": "${this.apiUrl}/${id}",
+        "line": 38,
+        "bodyKeys": [
+          "estado"
+        ],
+        "snippet": "this.http.put(\n      `${this.apiUrl}/${id}`,\n      { estado },\n      { withCredentials: true }\n    )"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/periodo.service.ts",
+        "method": "PUT",
+        "methodName": "createPeriodo",
+        "url": "${this.apiUrl}/${n_codper}",
+        "line": 28,
+        "bodyKeys": [
+          "f_cierre"
+        ],
+        "snippet": "this.http.put(\n      `${this.apiUrl}/${n_codper}`,\n      { f_cierre },\n      {\n        withCredentials: true,\n      }\n    )"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/horario.service.ts",
+        "method": "POST",
+        "methodName": "unknown",
+        "url": "${this.apiUrl}",
+        "line": 22,
+        "bodyKeys": [],
+        "snippet": "this.http.post(`${this.apiUrl}`, data, { withCredentials: true })"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/horario.service.ts",
+        "method": "PUT",
+        "methodName": "unknown",
+        "url": "${this.apiUrl}",
+        "line": 32,
+        "bodyKeys": [],
+        "snippet": "this.http.put(`${this.apiUrl}`, data, { withCredentials: true })"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/disponibilidad-horaria.service.ts",
+        "method": "POST",
+        "methodName": "getTokenHeader",
+        "url": "${this.apiUrl}",
+        "line": 26,
+        "bodyKeys": [
+          "disponibilidad"
+        ],
+        "snippet": "this.http.post(`${this.apiUrl}`, {disponibilidad}, this.getTokenHeader() )"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/disponibilidad-horaria.service.ts",
+        "method": "PUT",
+        "methodName": "getTokenHeader",
+        "url": "${this.apiUrl}/${id}",
+        "line": 34,
+        "bodyKeys": [],
+        "snippet": "this.http.put(`${this.apiUrl}/${id}`, disponibilidad, this.getTokenHeader())"
+      }
+    ],
+    "curl": "curl -sS -H \"Authorization: Bearer $TOKEN\" 'http://localhost:3000/dashboard/1' | jq ."
+  },
+  {
+    "module": "auth",
+    "controllerFile": "../../nest_docente/src/modules/auth/auth.controller.ts",
+    "controllerBase": "auth",
+    "method": "GET",
+    "routePath": "/google",
+    "fullPath": "/auth/google",
+    "decoratorLine": "@Get('google')",
+    "dtoFilesReferenced": [],
+    "pathParams": [],
+    "pathParamPattern": null,
+    "methodName": "googleLogin",
+    "frontendCallers": [
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/turno.service.ts",
+        "method": "DELETE",
+        "methodName": "createTurno",
+        "url": "${this.apiUrl}/${id}",
+        "line": 34,
+        "bodyKeys": [],
+        "snippet": "this.http.delete(`${this.apiUrl}/${id}`, { withCredentials: true })"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/turno.service.ts",
+        "method": "PUT",
+        "methodName": "createTurno",
+        "url": "${this.apiUrl}/${id}",
+        "line": 38,
+        "bodyKeys": [
+          "estado"
+        ],
+        "snippet": "this.http.put(\n      `${this.apiUrl}/${id}`,\n      { estado },\n      { withCredentials: true }\n    )"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/periodo.service.ts",
+        "method": "PUT",
+        "methodName": "createPeriodo",
+        "url": "${this.apiUrl}/${n_codper}",
+        "line": 28,
+        "bodyKeys": [
+          "f_cierre"
+        ],
+        "snippet": "this.http.put(\n      `${this.apiUrl}/${n_codper}`,\n      { f_cierre },\n      {\n        withCredentials: true,\n      }\n    )"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/horario.service.ts",
+        "method": "POST",
+        "methodName": "unknown",
+        "url": "${this.apiUrl}",
+        "line": 22,
+        "bodyKeys": [],
+        "snippet": "this.http.post(`${this.apiUrl}`, data, { withCredentials: true })"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/horario.service.ts",
+        "method": "PUT",
+        "methodName": "unknown",
+        "url": "${this.apiUrl}",
+        "line": 32,
+        "bodyKeys": [],
+        "snippet": "this.http.put(`${this.apiUrl}`, data, { withCredentials: true })"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/disponibilidad-horaria.service.ts",
+        "method": "POST",
+        "methodName": "getTokenHeader",
+        "url": "${this.apiUrl}",
+        "line": 26,
+        "bodyKeys": [
+          "disponibilidad"
+        ],
+        "snippet": "this.http.post(`${this.apiUrl}`, {disponibilidad}, this.getTokenHeader() )"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/disponibilidad-horaria.service.ts",
+        "method": "PUT",
+        "methodName": "getTokenHeader",
+        "url": "${this.apiUrl}/${id}",
+        "line": 34,
+        "bodyKeys": [],
+        "snippet": "this.http.put(`${this.apiUrl}/${id}`, disponibilidad, this.getTokenHeader())"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/auth.service.ts",
+        "method": "POST",
+        "methodName": "unknown",
+        "url": "${this.apiUrl}/auth/signin",
+        "line": 16,
+        "bodyKeys": [],
+        "snippet": "this.http.post(`${this.apiUrl}/auth/signin`, user, {\n      withCredentials: true,\n    })"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/auth.service.ts",
+        "method": "POST",
+        "methodName": "unknown",
+        "url": "${this.apiUrl}/auth/logout",
+        "line": 22,
+        "bodyKeys": [
+          ""
+        ],
+        "snippet": "this.http.post(\n      `${this.apiUrl}/auth/logout`,\n      {},\n      { withCredentials: true }\n    )"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/auth.service.ts",
+        "method": "GET",
+        "methodName": "unknown",
+        "url": "${this.apiUrl}/auth/verificar",
+        "line": 30,
+        "bodyKeys": [],
+        "snippet": "this.http.get(`${this.apiUrl}/auth/verificar`, {\n      withCredentials: true,\n    })"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/auth-google.service.ts",
+        "method": "GET",
+        "methodName": "initLogin",
+        "url": "http://localhost:3000/auth/google",
+        "line": 26,
+        "bodyKeys": [],
+        "snippet": "this.http.get('http://localhost:3000/auth/google')"
+      }
+    ],
+    "curl": "curl -sS -H \"Authorization: Bearer $TOKEN\" 'http://localhost:3000/auth/google' | jq ."
+  },
+  {
+    "module": "auth",
+    "controllerFile": "../../nest_docente/src/modules/auth/auth.controller.ts",
+    "controllerBase": "auth",
+    "method": "GET",
+    "routePath": "/google/callback",
+    "fullPath": "/auth/google/callback",
+    "decoratorLine": "@Get('google/callback')",
+    "dtoFilesReferenced": [],
+    "pathParams": [],
+    "pathParamPattern": null,
+    "methodName": "if",
+    "frontendCallers": [
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/turno.service.ts",
+        "method": "DELETE",
+        "methodName": "createTurno",
+        "url": "${this.apiUrl}/${id}",
+        "line": 34,
+        "bodyKeys": [],
+        "snippet": "this.http.delete(`${this.apiUrl}/${id}`, { withCredentials: true })"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/turno.service.ts",
+        "method": "PUT",
+        "methodName": "createTurno",
+        "url": "${this.apiUrl}/${id}",
+        "line": 38,
+        "bodyKeys": [
+          "estado"
+        ],
+        "snippet": "this.http.put(\n      `${this.apiUrl}/${id}`,\n      { estado },\n      { withCredentials: true }\n    )"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/periodo.service.ts",
+        "method": "PUT",
+        "methodName": "createPeriodo",
+        "url": "${this.apiUrl}/${n_codper}",
+        "line": 28,
+        "bodyKeys": [
+          "f_cierre"
+        ],
+        "snippet": "this.http.put(\n      `${this.apiUrl}/${n_codper}`,\n      { f_cierre },\n      {\n        withCredentials: true,\n      }\n    )"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/horario.service.ts",
+        "method": "POST",
+        "methodName": "unknown",
+        "url": "${this.apiUrl}",
+        "line": 22,
+        "bodyKeys": [],
+        "snippet": "this.http.post(`${this.apiUrl}`, data, { withCredentials: true })"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/horario.service.ts",
+        "method": "PUT",
+        "methodName": "unknown",
+        "url": "${this.apiUrl}",
+        "line": 32,
+        "bodyKeys": [],
+        "snippet": "this.http.put(`${this.apiUrl}`, data, { withCredentials: true })"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/disponibilidad-horaria.service.ts",
+        "method": "POST",
+        "methodName": "getTokenHeader",
+        "url": "${this.apiUrl}",
+        "line": 26,
+        "bodyKeys": [
+          "disponibilidad"
+        ],
+        "snippet": "this.http.post(`${this.apiUrl}`, {disponibilidad}, this.getTokenHeader() )"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/disponibilidad-horaria.service.ts",
+        "method": "PUT",
+        "methodName": "getTokenHeader",
+        "url": "${this.apiUrl}/${id}",
+        "line": 34,
+        "bodyKeys": [],
+        "snippet": "this.http.put(`${this.apiUrl}/${id}`, disponibilidad, this.getTokenHeader())"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/auth.service.ts",
+        "method": "POST",
+        "methodName": "unknown",
+        "url": "${this.apiUrl}/auth/signin",
+        "line": 16,
+        "bodyKeys": [],
+        "snippet": "this.http.post(`${this.apiUrl}/auth/signin`, user, {\n      withCredentials: true,\n    })"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/auth.service.ts",
+        "method": "POST",
+        "methodName": "unknown",
+        "url": "${this.apiUrl}/auth/logout",
+        "line": 22,
+        "bodyKeys": [
+          ""
+        ],
+        "snippet": "this.http.post(\n      `${this.apiUrl}/auth/logout`,\n      {},\n      { withCredentials: true }\n    )"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/auth.service.ts",
+        "method": "GET",
+        "methodName": "unknown",
+        "url": "${this.apiUrl}/auth/verificar",
+        "line": 30,
+        "bodyKeys": [],
+        "snippet": "this.http.get(`${this.apiUrl}/auth/verificar`, {\n      withCredentials: true,\n    })"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/auth-google.service.ts",
+        "method": "GET",
+        "methodName": "initLogin",
+        "url": "http://localhost:3000/auth/google",
+        "line": 26,
+        "bodyKeys": [],
+        "snippet": "this.http.get('http://localhost:3000/auth/google')"
+      }
+    ],
+    "curl": "curl -sS -H \"Authorization: Bearer $TOKEN\" 'http://localhost:3000/auth/google/callback' | jq ."
+  },
+  {
+    "module": "admin",
+    "controllerFile": "../../nest_docente/src/modules/admin/admin.controller.ts",
+    "controllerBase": "admin",
+    "method": "POST",
+    "routePath": "/permisos",
+    "fullPath": "/admin/permisos",
+    "decoratorLine": "@Post('permisos')",
+    "dtoFilesReferenced": [],
+    "pathParams": [],
+    "pathParamPattern": null,
+    "methodName": "getModulos",
+    "frontendCallers": [
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/user.service.ts",
+        "method": "POST",
+        "methodName": "getPermisosTo",
+        "url": "${this.apiUrl}/admin/permisos/to",
+        "line": 25,
+        "bodyKeys": [
+          "email"
+        ],
+        "snippet": "this.http.post(\n      `${this.apiUrl}/admin/permisos/to`,\n      { email },\n      { withCredentials: true }\n    )"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/user.service.ts",
+        "method": "POST",
+        "methodName": "getPermisosTo",
+        "url": "${this.apiUrl}/admin/permisos",
+        "line": 37,
+        "bodyKeys": [],
+        "snippet": "this.http.post(\n      `${this.apiUrl}/admin/permisos`,\n      {\n        user_id,\n        items_id,\n      },\n      { withCredentials: true }\n    )"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/turno.service.ts",
+        "method": "DELETE",
+        "methodName": "createTurno",
+        "url": "${this.apiUrl}/${id}",
+        "line": 34,
+        "bodyKeys": [],
+        "snippet": "this.http.delete(`${this.apiUrl}/${id}`, { withCredentials: true })"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/turno.service.ts",
+        "method": "PUT",
+        "methodName": "createTurno",
+        "url": "${this.apiUrl}/${id}",
+        "line": 38,
+        "bodyKeys": [
+          "estado"
+        ],
+        "snippet": "this.http.put(\n      `${this.apiUrl}/${id}`,\n      { estado },\n      { withCredentials: true }\n    )"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/periodo.service.ts",
+        "method": "PUT",
+        "methodName": "createPeriodo",
+        "url": "${this.apiUrl}/${n_codper}",
+        "line": 28,
+        "bodyKeys": [
+          "f_cierre"
+        ],
+        "snippet": "this.http.put(\n      `${this.apiUrl}/${n_codper}`,\n      { f_cierre },\n      {\n        withCredentials: true,\n      }\n    )"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/horario.service.ts",
+        "method": "POST",
+        "methodName": "unknown",
+        "url": "${this.apiUrl}",
+        "line": 22,
+        "bodyKeys": [],
+        "snippet": "this.http.post(`${this.apiUrl}`, data, { withCredentials: true })"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/horario.service.ts",
+        "method": "PUT",
+        "methodName": "unknown",
+        "url": "${this.apiUrl}",
+        "line": 32,
+        "bodyKeys": [],
+        "snippet": "this.http.put(`${this.apiUrl}`, data, { withCredentials: true })"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/disponibilidad-horaria.service.ts",
+        "method": "POST",
+        "methodName": "getTokenHeader",
+        "url": "${this.apiUrl}",
+        "line": 26,
+        "bodyKeys": [
+          "disponibilidad"
+        ],
+        "snippet": "this.http.post(`${this.apiUrl}`, {disponibilidad}, this.getTokenHeader() )"
+      },
+      {
+        "file": "../../Gestion_Docentes_New-main/src/app/services/disponibilidad-horaria.service.ts",
+        "method": "PUT",
+        "methodName": "getTokenHeader",
+        "url": "${this.apiUrl}/${id}",
+        "line": 34,
+        "bodyKeys": [],
+        "snippet": "this.http.put(`${this.apiUrl}/${id}`, disponibilidad, this.getTokenHeader())"
+      }
+    ],
+    "curl": "curl -sS -H \"Authorization: Bearer $TOKEN\" 'http://localhost:3000/admin/permisos' -X POST -H \"Content-Type: application/json\" -d '{ /* PLEASE FILL */ }' | jq ."
+  }
+]
