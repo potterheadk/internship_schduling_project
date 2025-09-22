@@ -1,4 +1,4 @@
-db_horrario
+# Database : db_horrario
 
 ### 1. `curso`
 
@@ -110,7 +110,7 @@ db_horrario
 * `curso_areas` & `funcion_docente` = lookup tables for classification
 
 
-jaguar_db_sigu
+# Database : jaguar_db_sigu
 
 📚 Important Columns in tb_especialidad
 
