@@ -6,7 +6,7 @@ This guide provides a minimal setup to get your **UMA Scheduler & AI Assistant**
 
 An intelligent university scheduling system featuring an automated engine, a drag-and-drop interactive viewer, an analytics dashboard, and a Gemini-powered chatbot.
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### 1. Prerequisites
 * **Python 3.9+**
@@ -95,4 +95,5 @@ When you move a class using the **Drag & Drop Viewer** or the **Editor**, the ap
 *   **Chatbot is disabled:** Ensure your `GOOGLE_API_KEY` is valid in the `.env` file and that you have an internet connection.
 *   **CSV Not Found:** Ensure your `scheduler_engine.py` is correctly configured to output to the path defined as `OUTPUT_CSV`.
 *   **Port Conflict:** If port `5050` is busy, change the `port=5050` line at the bottom of `app.py`.
+
 
