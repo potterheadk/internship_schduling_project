@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Manual Schedule Editor</title>
+
+    <!-- Load Main Global Styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        /* THEME CONSTANTS */
+        :root {
+            --bg: #0f172a;
+            --panel: #020617;
+            --border: #1e293b;
+            --text: #e5e7eb;
+            --muted: #9ca3af;
+            --accent: #2563eb;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .app-container {
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin: 0;
+            color: #f9fafb;
+        }
+
+        .panel {
+            background: var(--panel);
+            border-radius: 16px;
+            padding: 16px;
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Table */
+        .table-container {
+            overflow-x: auto;
+            min-height: 60vh;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        thead {
+            background: #1e293b;
+            position: sticky;
+            top: 0;
+        }
+
+        th,
+        td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #334155;
+        }
+
+        th {
+            color: var(--muted);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        tr:hover {
+            background: #0f172a;
+        }
+
+        /* Inputs & Buttons */
+        input,
+        select {
+            background: var(--bg);
+            border: 1px solid #334155;
+            color: var(--text);
+            padding: 8px;
+            border-radius: 6px;
+            outline: none;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #38bdf8;
+        }
+
+        button {
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-danger {
+            background: #ef4444;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #334155;
+            color: white;
+        }
+
+        .btn-sm {
+            padding: 4px 10px;
+            font-size: 0.75rem;
+            margin-right: 5px;
+        }
+
+        /* Search Bar */
+        .search-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .modal-content {
+            background: var(--panel);
+            padding: 24px;
+            border-radius: 12px;
+            width: 600px;
+            max-width: 90%;
+            border: 1px solid #475569;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-header {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 10px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+            border-top: 1px solid #334155;
+            padding-top: 15px;
+        }
+
+        /* Header Logo for Editor */
+        .header-logo {
+            height: 36px;
+            width: auto;
+            object-fit: contain;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="app-container">
+        <div class="header">
+            <div>
+                <h1>Manual Schedule Editor</h1>
+                <div style="color:var(--muted);">CRUD Operations for <code>final_schedule.csv</code></div>
+            </div>
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <a href="/"><button class="btn-secondary">← Back to Viewer</button></a>
+                <button id="langToggle"
+                    style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #fff; cursor: pointer; padding: 8px 14px; border-radius: 6px; font-size: 0.9rem; transition: all 0.2s ease;">🇺🇸
+                    EN</button>
+                <img src="{{ url_for('static', filename='imgs/uma-logo.png') }}" alt="UMA Logo" class="header-logo">
+                <button class="btn-primary" onclick="openModal()">+ Add Session</button>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search Teacher or Period..." style="flex: 1;">
+                <select id="dayFilter">
+                    <option value="">All Days</option>
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                    <option value="Saturday">Saturday</option>
+                </select>
+                <button class="btn-secondary" onclick="currentPage=0; loadSessions()">Search</button>
+            </div>
+
+            <div class="table-container">
+                <table id="scheduleTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Period</th>
+                            <th>Day</th>
+                            <th>Time</th>
+                            <th>Room</th>
+                            <th>Course</th>
+                            <th>Teacher</th>
+                            <th>Type</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody><!-- Populated via JS --></tbody>
+                </table>
+            </div>
+
+            <div style="margin-top:15px; display:flex; justify-content:center; gap:15px; align-items:center;">
+                <button class="btn-secondary" onclick="changePage(-1)">Previous</button>
+                <span id="pageInfo" style="color:var(--muted);">Page 1</span>
+                <button class="btn-secondary" onclick="changePage(1)">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL -->
+    <div class="modal-overlay" id="sessionModal">
+        <div class="modal-content">
+            <div class="modal-header" id="modalTitle">Edit Session</div>
+            <input type="hidden" id="inp_id">
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Period (n_codper)</label>
+                    <input type="number" id="inp_period" placeholder="e.g. 20251">
+                </div>
+                <div class="form-group">
+                    <label>Day of Week</label>
+                    <select id="inp_day">
+                        <option value="Monday">Monday</option>
+                        <option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option>
+                        <option value="Thursday">Thursday</option>
+                        <option value="Friday">Friday</option>
+                        <option value="Saturday">Saturday</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Start Time (HH:MM)</label>
+                    <input type="text" id="inp_start" placeholder="08:00">
+                </div>
+                <div class="form-group">
+                    <label>End Time (HH:MM)</label>
+                    <input type="text" id="inp_end" placeholder="10:00">
+                </div>
+                <div class="form-group">
+                    <label>Room ID</label>
+                    <input type="text" id="inp_room" placeholder="01-CL-01 or VIRTUAL">
+                </div>
+                <div class="form-group">
+                    <label>Turno</label>
+                    <select id="inp_turno">
+                        <option value="Diurno">Diurno</option>
+                        <option value="Nocturno">Nocturno</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Course Name / Code</label>
+                <input type="text" id="inp_course" placeholder="Course Name">
+            </div>
+
+            <div class="form-group">
+                <label>Teacher Name</label>
+                <input type="text" id="inp_teacher" placeholder="Full Name">
+            </div>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Activity Type</label>
+                    <select id="inp_type">
+                        <option value="theory">Theory</option>
+                        <option value="lab">Lab</option>
+                        <option value="virtual">Virtual</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Division / Section</label>
+                    <input type="text" id="inp_div" placeholder="e.g. A">
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn-secondary" onclick="closeModal()">Cancel</button>
+                <button class="btn-primary" onclick="saveSession()">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentPage = 0;
+        const limit = 20;
+
+        async function loadSessions() {
+            const search = document.getElementById("searchInput").value.trim();
+            const day = document.getElementById("dayFilter").value;
+
+            let url = `/api/schedule?offset=${currentPage * limit}&limit=${limit}`;
+            if (day) url += `&day=${encodeURIComponent(day)}`;
+            if (search) {
+                // Simple heuristic: if number, assume period, else teacher
+                if (!isNaN(search)) url += `&period=${encodeURIComponent(search)}`;
+                else url += `&teacher=${encodeURIComponent(search)}`;
+            }
+
+            try {
+                const res = await fetch(url);
+                const data = await res.json();
+
+                const tbody = document.querySelector("#scheduleTable tbody");
+                tbody.innerHTML = "";
+
+                (data.items || []).forEach(row => {
+                    const tr = document.createElement("tr");
+                    const type = (row.activity_type || "").toLowerCase();
+                    const typeColor = type === 'lab'
+                        ? '#38bdf8'
+                        : (type === 'virtual' ? '#fb923c' : '#4ade80');
+
+                    tr.innerHTML = `
+                <td style="color:#64748b">${row.session_id}</td>
+                <td>${row.n_codper || ""}</td>
+                <td>${row.day_of_week || ""}</td>
+                <td>${row.start_time || ""} - ${row.end_time || ""}</td>
+                <td style="font-family:monospace">${row.room_id || ""}</td>
+                <td>${(row.c_nomcur || row.c_codcur || "").substring(0, 30)}</td>
+                <td>${row.teacher_names || ""}</td>
+                <td style="color:${typeColor}; font-weight:bold; text-transform:capitalize;">${type || ""}</td>
+                <td>
+                    <button class="btn-secondary btn-sm" onclick="editSession(${row.session_id})">Edit</button>
+                    <button class="btn-danger btn-sm" onclick="deleteSession(${row.session_id})">Del</button>
+                </td>
+            `;
+                    tbody.appendChild(tr);
+                });
+                document.getElementById("pageInfo").innerText = `Page ${currentPage + 1}`;
+            } catch (err) {
+                console.error(err);
+                alert("Failed to load data");
+            }
+        }
+
+        function changePage(dir) {
+            if (dir === -1 && currentPage > 0) {
+                currentPage--;
+                loadSessions();
+            }
+            if (dir === 1) {
+                currentPage++;
+                loadSessions();
+            }
+        }
+
+        // --- MODAL LOGIC ---
+        const modal = document.getElementById("sessionModal");
+
+        function openModal() {
+            document.getElementById("modalTitle").innerText = "Add New Session";
+            document.getElementById("inp_id").value = "";
+            ['inp_period', 'inp_start', 'inp_end', 'inp_room', 'inp_course', 'inp_teacher', 'inp_div'].forEach(id => {
+                document.getElementById(id).value = "";
+            });
+            document.getElementById("inp_day").value = "Monday";
+            document.getElementById("inp_turno").value = "Diurno";
+            document.getElementById("inp_type").value = "theory";
+            modal.style.display = "flex";
+        }
+
+        async function editSession(id) {
+            try {
+                const res = await fetch(`/api/schedule/${id}`);
+                if (!res.ok) {
+                    alert("Session not found");
+                    return;
+                }
+                const row = await res.json();
+
+                document.getElementById("modalTitle").innerText = "Edit Session #" + row.session_id;
+                document.getElementById("inp_id").value = row.session_id;
+
+                document.getElementById("inp_period").value = row.n_codper || "";
+                document.getElementById("inp_day").value = row.day_of_week || "Monday";
+                document.getElementById("inp_start").value = row.start_time || "";
+                document.getElementById("inp_end").value = row.end_time || "";
+                document.getElementById("inp_room").value = row.room_id || "";
+                document.getElementById("inp_course").value = row.c_nomcur || "";
+                document.getElementById("inp_teacher").value = row.teacher_names || "";
+                document.getElementById("inp_type").value = (row.activity_type || "theory").toLowerCase();
+                document.getElementById("inp_turno").value = row.turno || "Diurno";
+                document.getElementById("inp_div").value = row.division || "";
+
+                modal.style.display = "flex";
+            } catch (e) {
+                console.error(e);
+                alert("Failed to load session");
+            }
+        }
+
+        function closeModal() { modal.style.display = "none"; }
+
+        async function saveSession() {
+            const id = document.getElementById("inp_id").value;
+            const payload = {
+                n_codper: document.getElementById("inp_period").value,
+                day_of_week: document.getElementById("inp_day").value,
+                start_time: document.getElementById("inp_start").value,
+                end_time: document.getElementById("inp_end").value,
+                room_id: document.getElementById("inp_room").value,
+                c_nomcur: document.getElementById("inp_course").value,
+                teacher_names: document.getElementById("inp_teacher").value,
+                activity_type: document.getElementById("inp_type").value,
+                turno: document.getElementById("inp_turno").value,
+                division: document.getElementById("inp_div").value
+            };
+
+            const url = id ? `/api/schedule/${id}` : "/api/schedule";
+            const method = id ? "PATCH" : "POST";
+
+            try {
+                const res = await fetch(url, {
+                    method: method,
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload)
+                });
+                if (res.ok) {
+                    closeModal();
+                    loadSessions();
+                } else {
+                    alert("Failed to save session.");
+                }
+            } catch (e) {
+                console.error(e);
+                alert("Network error");
+            }
+        }
+
+        async function deleteSession(id) {
+            if (!confirm("Delete this session permanently?")) return;
+            try {
+                const res = await fetch(`/api/schedule/${id}`, { method: "DELETE" });
+                if (!res.ok) {
+                    alert("Failed to delete session");
+                    return;
+                }
+                loadSessions();
+            } catch (e) {
+                console.error(e);
+                alert("Network error deleting session");
+            }
+        }
+
+        // Close modal on background click (optional nice UX)
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        // Initial Load
+        loadSessions();
+    </script>
+
+    <!-- Google Translation script -->
+    <script src="{{ url_for('static', filename='js/translation.js') }}"></script>
+</body>
+
+</html>

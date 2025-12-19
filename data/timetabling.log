@@ -1,0 +1,462 @@
+2025-12-18 03:50:33,969 - INFO - ======================================================================
+2025-12-18 03:50:33,969 - INFO - 🤖 ScheduleChatbot Initializing (Router & Tools Architecture)
+2025-12-18 03:50:33,969 - INFO - ======================================================================
+2025-12-18 03:50:33,969 - DEBUG - Loading schedule from: Output/final_schedule.csv
+2025-12-18 03:50:34,054 - DEBUG - ✅ All time values parsed successfully
+2025-12-18 03:50:34,054 - DEBUG - Building lookup indexes...
+2025-12-18 03:50:34,947 - INFO - ✅ Indexes built: 119 teachers, 39 rooms, 275 courses
+2025-12-18 03:50:34,948 - INFO - ✅ Data Loaded: 7573 records
+2025-12-18 03:50:34,948 - DEBUG -    Columns: ['session_id', 'n_codper', 'admission_entry', 'start_period', 'end_period', 'c_codesp', 'nomesp', 'n_ciclo']...
+2025-12-18 03:50:34,949 - DEBUG -    Days: ['Friday', 'Monday', 'Saturday', 'Thursday', 'Tuesday', 'Unassigned', 'Wednesday']
+2025-12-18 03:50:34,950 - DEBUG -    Unique rooms: 39
+2025-12-18 03:50:34,951 - DEBUG -    Unique teachers: 119
+2025-12-18 03:50:34,951 - INFO - ✅ Brain (Gemini 2.5 Flash) Online - Router & Synthesizer Ready
+2025-12-18 03:50:34,951 - INFO - ✅ Chatbot initialized successfully
+2025-12-18 03:50:34,965 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5050
+ * Running on http://192.168.1.7:5050
+2025-12-18 03:50:34,965 - INFO - [33mPress CTRL+C to quit[0m
+2025-12-18 03:50:38,881 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:38] "GET / HTTP/1.1" 200 -
+2025-12-18 03:50:38,989 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:38] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-18 03:50:38,990 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:38] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2025-12-18 03:50:38,991 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:38] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-18 03:50:39,036 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:39] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-18 03:50:39,067 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:39] "GET /health HTTP/1.1" 200 -
+2025-12-18 03:50:39,071 - INFO - 🏥 Chatbot Health: HEALTHY
+2025-12-18 03:50:39,073 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:39] "GET /api/chatbot-health HTTP/1.1" 200 -
+2025-12-18 03:50:41,362 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:41] "GET /dashboard HTTP/1.1" 200 -
+2025-12-18 03:50:41,504 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:41] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-18 03:50:41,618 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:41] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-18 03:50:41,660 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:41] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-18 03:50:43,919 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:43] "GET / HTTP/1.1" 200 -
+2025-12-18 03:50:44,075 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:44] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2025-12-18 03:50:44,076 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:44] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-18 03:50:44,079 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:44] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-18 03:50:44,115 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:44] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-18 03:50:44,149 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:44] "GET /health HTTP/1.1" 200 -
+2025-12-18 03:50:44,154 - INFO - 🏥 Chatbot Health: HEALTHY
+2025-12-18 03:50:44,157 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:44] "GET /api/chatbot-health HTTP/1.1" 200 -
+2025-12-18 03:50:45,292 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:45] "GET /viewer HTTP/1.1" 200 -
+2025-12-18 03:50:45,401 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:45] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-18 03:50:45,405 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:45] "GET /static/css/viewer.css HTTP/1.1" 200 -
+2025-12-18 03:50:45,445 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:45] "[36mGET /static/js/viewer.js HTTP/1.1[0m" 304 -
+2025-12-18 03:50:45,449 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:45] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-18 03:50:45,484 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:45] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-18 03:50:45,787 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:45] "GET /api/schedule?limit=10000 HTTP/1.1" 200 -
+2025-12-18 03:50:53,253 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:53] "GET / HTTP/1.1" 200 -
+2025-12-18 03:50:53,502 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-18 03:50:53,503 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:53] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2025-12-18 03:50:53,504 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:53] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-18 03:50:53,567 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:53] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-18 03:50:53,582 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:53] "GET /health HTTP/1.1" 200 -
+2025-12-18 03:50:53,585 - INFO - 🏥 Chatbot Health: HEALTHY
+2025-12-18 03:50:53,586 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:53] "GET /api/chatbot-health HTTP/1.1" 200 -
+2025-12-18 03:50:58,121 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:58] "GET /editor HTTP/1.1" 200 -
+2025-12-18 03:50:58,219 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:58] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-18 03:50:58,220 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:58] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-18 03:50:58,244 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:58] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-18 03:50:58,349 - INFO - 127.0.0.1 - - [18/Dec/2025 03:50:58] "GET /api/schedule?offset=0&limit=20 HTTP/1.1" 200 -
+2025-12-18 03:51:04,142 - INFO - 127.0.0.1 - - [18/Dec/2025 03:51:04] "GET / HTTP/1.1" 200 -
+2025-12-18 03:51:04,252 - INFO - 127.0.0.1 - - [18/Dec/2025 03:51:04] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-18 03:51:04,259 - INFO - 127.0.0.1 - - [18/Dec/2025 03:51:04] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2025-12-18 03:51:04,280 - INFO - 127.0.0.1 - - [18/Dec/2025 03:51:04] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-18 03:51:04,334 - INFO - 127.0.0.1 - - [18/Dec/2025 03:51:04] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-18 03:51:04,366 - INFO - 🏥 Chatbot Health: HEALTHY
+2025-12-18 03:51:04,368 - INFO - 127.0.0.1 - - [18/Dec/2025 03:51:04] "GET /health HTTP/1.1" 200 -
+2025-12-18 03:51:04,369 - INFO - 127.0.0.1 - - [18/Dec/2025 03:51:04] "GET /api/chatbot-health HTTP/1.1" 200 -
+2025-12-18 03:51:09,540 - INFO - 💬 Chat request: hi...
+2025-12-18 03:51:09,543 - ERROR - ❌ Error in chat endpoint: The session is unavailable because no secret key was set.  Set the secret_key on the application to something unique and secret.
+Traceback (most recent call last):
+  File "/home/turtle_secure/Documents/uma_internship/kartikey_final/flask-app/flask-app_translation-implemented/app.py", line 536, in chat
+    session['chat_history'] = []
+    ~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/turtle_secure/Documents/codes/myvenv/lib/python3.13/site-packages/flask/sessions.py", line 97, in _fail
+    raise RuntimeError(
+    ...<3 lines>...
+    )
+RuntimeError: The session is unavailable because no secret key was set.  Set the secret_key on the application to something unique and secret.
+
+2025-12-18 03:51:09,543 - INFO - 127.0.0.1 - - [18/Dec/2025 03:51:09] "[35m[1mPOST /api/chat HTTP/1.1[0m" 500 -
+2025-12-18 03:52:01,574 - INFO - 127.0.0.1 - - [18/Dec/2025 03:52:01] "GET / HTTP/1.1" 200 -
+2025-12-18 03:52:01,680 - INFO - 127.0.0.1 - - [18/Dec/2025 03:52:01] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-18 03:52:01,684 - INFO - 127.0.0.1 - - [18/Dec/2025 03:52:01] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-18 03:52:01,686 - INFO - 127.0.0.1 - - [18/Dec/2025 03:52:01] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2025-12-18 03:52:01,835 - INFO - 127.0.0.1 - - [18/Dec/2025 03:52:01] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-18 03:52:01,855 - INFO - 127.0.0.1 - - [18/Dec/2025 03:52:01] "GET /health HTTP/1.1" 200 -
+2025-12-18 03:52:01,859 - INFO - 🏥 Chatbot Health: HEALTHY
+2025-12-18 03:52:01,861 - INFO - 127.0.0.1 - - [18/Dec/2025 03:52:01] "GET /api/chatbot-health HTTP/1.1" 200 -
+2025-12-18 03:52:05,509 - INFO - 💬 Chat request: hi...
+2025-12-18 03:52:05,510 - ERROR - ❌ Error in chat endpoint: The session is unavailable because no secret key was set.  Set the secret_key on the application to something unique and secret.
+Traceback (most recent call last):
+  File "/home/turtle_secure/Documents/uma_internship/kartikey_final/flask-app/flask-app_translation-implemented/app.py", line 536, in chat
+    if 'chat_history' not in session:
+        ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/turtle_secure/Documents/codes/myvenv/lib/python3.13/site-packages/flask/sessions.py", line 97, in _fail
+    raise RuntimeError(
+    ...<3 lines>...
+    )
+RuntimeError: The session is unavailable because no secret key was set.  Set the secret_key on the application to something unique and secret.
+
+2025-12-18 03:52:05,511 - INFO - 127.0.0.1 - - [18/Dec/2025 03:52:05] "[35m[1mPOST /api/chat HTTP/1.1[0m" 500 -
+2025-12-18 03:52:12,856 - INFO - ======================================================================
+2025-12-18 03:52:12,856 - INFO - 🤖 ScheduleChatbot Initializing (Router & Tools Architecture)
+2025-12-18 03:52:12,856 - INFO - ======================================================================
+2025-12-18 03:52:12,856 - DEBUG - Loading schedule from: Output/final_schedule.csv
+2025-12-18 03:52:12,940 - DEBUG - ✅ All time values parsed successfully
+2025-12-18 03:52:12,940 - DEBUG - Building lookup indexes...
+2025-12-18 03:52:13,910 - INFO - ✅ Indexes built: 119 teachers, 39 rooms, 275 courses
+2025-12-18 03:52:13,911 - INFO - ✅ Data Loaded: 7573 records
+2025-12-18 03:52:13,911 - DEBUG -    Columns: ['session_id', 'n_codper', 'admission_entry', 'start_period', 'end_period', 'c_codesp', 'nomesp', 'n_ciclo']...
+2025-12-18 03:52:13,912 - DEBUG -    Days: ['Friday', 'Monday', 'Saturday', 'Thursday', 'Tuesday', 'Unassigned', 'Wednesday']
+2025-12-18 03:52:13,914 - DEBUG -    Unique rooms: 39
+2025-12-18 03:52:13,914 - DEBUG -    Unique teachers: 119
+2025-12-18 03:52:13,914 - INFO - ✅ Brain (Gemini 2.5 Flash) Online - Router & Synthesizer Ready
+2025-12-18 03:52:13,915 - INFO - ✅ Chatbot initialized successfully
+2025-12-18 03:52:13,934 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5050
+ * Running on http://192.168.1.7:5050
+2025-12-18 03:52:13,935 - INFO - [33mPress CTRL+C to quit[0m
+2025-12-18 03:52:17,121 - INFO - 127.0.0.1 - - [18/Dec/2025 03:52:17] "GET / HTTP/1.1" 200 -
+2025-12-18 03:52:17,342 - INFO - 127.0.0.1 - - [18/Dec/2025 03:52:17] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-18 03:52:17,345 - INFO - 127.0.0.1 - - [18/Dec/2025 03:52:17] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2025-12-18 03:52:17,356 - INFO - 127.0.0.1 - - [18/Dec/2025 03:52:17] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-18 03:52:17,398 - INFO - 127.0.0.1 - - [18/Dec/2025 03:52:17] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-18 03:52:17,431 - INFO - 127.0.0.1 - - [18/Dec/2025 03:52:17] "GET /health HTTP/1.1" 200 -
+2025-12-18 03:52:17,435 - INFO - 🏥 Chatbot Health: HEALTHY
+2025-12-18 03:52:17,436 - INFO - 127.0.0.1 - - [18/Dec/2025 03:52:17] "GET /api/chatbot-health HTTP/1.1" 200 -
+2025-12-18 03:52:21,493 - INFO - 💬 Chat request: hi...
+2025-12-18 03:52:21,494 - INFO - 
+======================================================================
+2025-12-18 03:52:21,495 - INFO - 📩 User Query: hi
+2025-12-18 03:52:21,495 - INFO - ======================================================================
+2025-12-18 03:52:21,496 - DEBUG - 🧠 Routing query with Gemini...
+2025-12-18 03:52:23,399 - DEBUG - ✅ JSON parsed successfully on attempt 1
+2025-12-18 03:52:23,399 - INFO - ✅ Intent: greeting | Entities: ['day', 'time', 'room', 'room_type', 'course', 'teacher']
+2025-12-18 03:52:23,401 - DEBUG - Intent: greeting | Entities: {'day': None, 'time': None, 'room': None, 'room_type': None, 'course': None, 'teacher': None}
+2025-12-18 03:52:23,401 - INFO - ✅ Greeting detected
+2025-12-18 03:52:23,402 - INFO - ✅ Chat response sent (156 chars)
+2025-12-18 03:52:23,404 - INFO - 127.0.0.1 - - [18/Dec/2025 03:52:23] "POST /api/chat HTTP/1.1" 200 -
+2025-12-19 15:53:03,006 - INFO - ======================================================================
+2025-12-19 15:53:03,007 - INFO - 🤖 ScheduleChatbot Initializing (Router & Tools Architecture)
+2025-12-19 15:53:03,008 - INFO - ======================================================================
+2025-12-19 15:53:03,008 - DEBUG - Loading schedule from: Output/final_schedule.csv
+2025-12-19 15:53:03,082 - DEBUG - ✅ All time values parsed successfully
+2025-12-19 15:53:03,083 - DEBUG - Building lookup indexes...
+2025-12-19 15:53:03,919 - INFO - ✅ Indexes built: 119 teachers, 39 rooms, 275 courses
+2025-12-19 15:53:03,920 - INFO - ✅ Data Loaded: 7573 records
+2025-12-19 15:53:03,920 - DEBUG -    Columns: ['session_id', 'n_codper', 'admission_entry', 'start_period', 'end_period', 'c_codesp', 'nomesp', 'n_ciclo']...
+2025-12-19 15:53:03,921 - DEBUG -    Days: ['Friday', 'Monday', 'Saturday', 'Thursday', 'Tuesday', 'Unassigned', 'Wednesday']
+2025-12-19 15:53:03,922 - DEBUG -    Unique rooms: 39
+2025-12-19 15:53:03,923 - DEBUG -    Unique teachers: 119
+2025-12-19 15:53:03,923 - INFO - ✅ Brain (Gemini 2.5 Flash) Online - Router & Synthesizer Ready
+2025-12-19 15:53:03,923 - INFO - ✅ Chatbot initialized successfully
+2025-12-19 15:53:04,049 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5050
+ * Running on http://192.168.1.7:5050
+2025-12-19 15:53:04,050 - INFO - [33mPress CTRL+C to quit[0m
+2025-12-19 15:53:50,366 - INFO - 127.0.0.1 - - [19/Dec/2025 15:53:50] "GET / HTTP/1.1" 200 -
+2025-12-19 15:53:50,444 - INFO - 127.0.0.1 - - [19/Dec/2025 15:53:50] "GET /static/css/home.css HTTP/1.1" 200 -
+2025-12-19 15:53:50,445 - INFO - 127.0.0.1 - - [19/Dec/2025 15:53:50] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-12-19 15:53:50,509 - INFO - 127.0.0.1 - - [19/Dec/2025 15:53:50] "GET /static/imgs/uma-logo.png HTTP/1.1" 200 -
+2025-12-19 15:53:50,530 - INFO - 127.0.0.1 - - [19/Dec/2025 15:53:50] "GET /static/js/translation.js HTTP/1.1" 200 -
+2025-12-19 15:53:50,639 - INFO - 127.0.0.1 - - [19/Dec/2025 15:53:50] "GET /health HTTP/1.1" 200 -
+2025-12-19 15:53:50,644 - INFO - 🏥 Chatbot Health: HEALTHY
+2025-12-19 15:53:50,644 - INFO - 127.0.0.1 - - [19/Dec/2025 15:53:50] "GET /api/chatbot-health HTTP/1.1" 200 -
+2025-12-19 15:53:51,228 - INFO - 127.0.0.1 - - [19/Dec/2025 15:53:51] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-12-19 15:53:56,493 - INFO - 127.0.0.1 - - [19/Dec/2025 15:53:56] "GET /dashboard HTTP/1.1" 200 -
+2025-12-19 15:53:56,583 - INFO - 127.0.0.1 - - [19/Dec/2025 15:53:56] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 15:53:56,588 - INFO - 127.0.0.1 - - [19/Dec/2025 15:53:56] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 15:53:56,612 - INFO - 127.0.0.1 - - [19/Dec/2025 15:53:56] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 15:54:13,808 - INFO - 127.0.0.1 - - [19/Dec/2025 15:54:13] "GET /dashboard HTTP/1.1" 200 -
+2025-12-19 15:54:13,879 - INFO - 127.0.0.1 - - [19/Dec/2025 15:54:13] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 15:54:13,885 - INFO - 127.0.0.1 - - [19/Dec/2025 15:54:13] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 15:54:13,913 - INFO - 127.0.0.1 - - [19/Dec/2025 15:54:13] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 15:55:33,722 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:33] "GET / HTTP/1.1" 200 -
+2025-12-19 15:55:33,874 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:33] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2025-12-19 15:55:33,876 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:33] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 15:55:33,881 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:33] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 15:55:33,887 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:33] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 15:55:33,963 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:33] "GET /health HTTP/1.1" 200 -
+2025-12-19 15:55:33,968 - INFO - 🏥 Chatbot Health: HEALTHY
+2025-12-19 15:55:33,970 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:33] "GET /api/chatbot-health HTTP/1.1" 200 -
+2025-12-19 15:55:40,520 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:40] "GET / HTTP/1.1" 200 -
+2025-12-19 15:55:40,656 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:40] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 15:55:40,658 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:40] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 15:55:40,663 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:40] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2025-12-19 15:55:40,672 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:40] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 15:55:40,762 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:40] "GET /health HTTP/1.1" 200 -
+2025-12-19 15:55:40,774 - INFO - 🏥 Chatbot Health: HEALTHY
+2025-12-19 15:55:40,775 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:40] "GET /api/chatbot-health HTTP/1.1" 200 -
+2025-12-19 15:55:46,210 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:46] "GET /dashboard HTTP/1.1" 200 -
+2025-12-19 15:55:46,287 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 15:55:46,301 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:46] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 15:55:46,370 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:46] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 15:55:48,554 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:48] "GET /dashboard HTTP/1.1" 200 -
+2025-12-19 15:55:48,633 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:48] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 15:55:48,637 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:48] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 15:55:48,662 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:48] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 15:55:51,127 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:51] "GET / HTTP/1.1" 200 -
+2025-12-19 15:55:51,234 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:51] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 15:55:51,241 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:51] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 15:55:51,246 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:51] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2025-12-19 15:55:51,249 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:51] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 15:55:51,337 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:51] "GET /health HTTP/1.1" 200 -
+2025-12-19 15:55:51,350 - INFO - 🏥 Chatbot Health: HEALTHY
+2025-12-19 15:55:51,351 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:51] "GET /api/chatbot-health HTTP/1.1" 200 -
+2025-12-19 15:55:53,737 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:53] "GET /editor HTTP/1.1" 200 -
+2025-12-19 15:55:53,809 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 15:55:53,812 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:53] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 15:55:53,820 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:53] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 15:55:53,917 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:53] "GET /api/schedule?offset=0&limit=20 HTTP/1.1" 200 -
+2025-12-19 15:55:57,594 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:57] "GET / HTTP/1.1" 200 -
+2025-12-19 15:55:57,713 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:57] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 15:55:57,721 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:57] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 15:55:57,726 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:57] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 15:55:57,731 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:57] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2025-12-19 15:55:57,788 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:57] "GET /health HTTP/1.1" 200 -
+2025-12-19 15:55:57,797 - INFO - 🏥 Chatbot Health: HEALTHY
+2025-12-19 15:55:57,799 - INFO - 127.0.0.1 - - [19/Dec/2025 15:55:57] "GET /api/chatbot-health HTTP/1.1" 200 -
+2025-12-19 15:56:00,635 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:00] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2025-12-19 15:56:00,646 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:00] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 15:56:00,649 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:00] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-12-19 15:56:20,793 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:20] "GET / HTTP/1.1" 200 -
+2025-12-19 15:56:20,917 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:20] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 15:56:20,923 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:20] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2025-12-19 15:56:20,925 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:20] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 15:56:20,932 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:20] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 15:56:20,998 - INFO - 🏥 Chatbot Health: HEALTHY
+2025-12-19 15:56:20,999 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:20] "GET /api/chatbot-health HTTP/1.1" 200 -
+2025-12-19 15:56:21,000 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:21] "GET /health HTTP/1.1" 200 -
+2025-12-19 15:56:21,929 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:21] "GET / HTTP/1.1" 200 -
+2025-12-19 15:56:22,029 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:22] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 15:56:22,039 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:22] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2025-12-19 15:56:22,042 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:22] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 15:56:22,046 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:22] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 15:56:22,156 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:22] "GET /health HTTP/1.1" 200 -
+2025-12-19 15:56:22,161 - INFO - 🏥 Chatbot Health: HEALTHY
+2025-12-19 15:56:22,162 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:22] "GET /api/chatbot-health HTTP/1.1" 200 -
+2025-12-19 15:56:29,127 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:29] "GET / HTTP/1.1" 200 -
+2025-12-19 15:56:29,231 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:29] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 15:56:29,237 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:29] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 15:56:29,238 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:29] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2025-12-19 15:56:29,246 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:29] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 15:56:29,338 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:29] "GET /health HTTP/1.1" 200 -
+2025-12-19 15:56:29,349 - INFO - 🏥 Chatbot Health: HEALTHY
+2025-12-19 15:56:29,350 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:29] "GET /api/chatbot-health HTTP/1.1" 200 -
+2025-12-19 15:56:37,008 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:37] "GET / HTTP/1.1" 200 -
+2025-12-19 15:56:37,104 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:37] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-12-19 15:56:37,106 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:37] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 15:56:37,106 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:37] "GET /static/css/home.css HTTP/1.1" 200 -
+2025-12-19 15:56:37,189 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:37] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 15:56:37,404 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:37] "GET /health HTTP/1.1" 200 -
+2025-12-19 15:56:37,406 - INFO - 🏥 Chatbot Health: HEALTHY
+2025-12-19 15:56:37,407 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:37] "GET /api/chatbot-health HTTP/1.1" 200 -
+2025-12-19 15:56:43,352 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:43] "GET /viewer HTTP/1.1" 200 -
+2025-12-19 15:56:43,406 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:43] "[36mGET /static/css/viewer.css HTTP/1.1[0m" 304 -
+2025-12-19 15:56:43,407 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:43] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 15:56:43,409 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:43] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 15:56:43,417 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:43] "[36mGET /static/js/viewer.js HTTP/1.1[0m" 304 -
+2025-12-19 15:56:43,442 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:43] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 15:56:43,698 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:43] "GET /api/schedule?limit=10000 HTTP/1.1" 200 -
+2025-12-19 15:56:49,682 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:49] "GET / HTTP/1.1" 200 -
+2025-12-19 15:56:49,749 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:49] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 15:56:49,750 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:49] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 15:56:49,751 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:49] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2025-12-19 15:56:49,779 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:49] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 15:56:49,909 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:49] "GET /health HTTP/1.1" 200 -
+2025-12-19 15:56:49,911 - INFO - 🏥 Chatbot Health: HEALTHY
+2025-12-19 15:56:49,912 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:49] "GET /api/chatbot-health HTTP/1.1" 200 -
+2025-12-19 15:56:52,011 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:52] "GET /editor HTTP/1.1" 200 -
+2025-12-19 15:56:52,056 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:52] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 15:56:52,064 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:52] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 15:56:52,072 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:52] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 15:56:52,133 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:52] "GET /api/schedule?offset=0&limit=20 HTTP/1.1" 200 -
+2025-12-19 15:56:58,831 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:58] "GET /dashboard HTTP/1.1" 200 -
+2025-12-19 15:56:58,887 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:58] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 15:56:58,913 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:58] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 15:56:58,940 - INFO - 127.0.0.1 - - [19/Dec/2025 15:56:58] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 15:57:00,638 - INFO - 127.0.0.1 - - [19/Dec/2025 15:57:00] "GET /dashboard HTTP/1.1" 200 -
+2025-12-19 15:57:00,686 - INFO - 127.0.0.1 - - [19/Dec/2025 15:57:00] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 15:57:00,714 - INFO - 127.0.0.1 - - [19/Dec/2025 15:57:00] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 15:57:00,738 - INFO - 127.0.0.1 - - [19/Dec/2025 15:57:00] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 15:57:04,017 - INFO - 127.0.0.1 - - [19/Dec/2025 15:57:04] "GET / HTTP/1.1" 200 -
+2025-12-19 15:57:04,097 - INFO - 127.0.0.1 - - [19/Dec/2025 15:57:04] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 15:57:04,099 - INFO - 127.0.0.1 - - [19/Dec/2025 15:57:04] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2025-12-19 15:57:04,100 - INFO - 127.0.0.1 - - [19/Dec/2025 15:57:04] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 15:57:04,130 - INFO - 127.0.0.1 - - [19/Dec/2025 15:57:04] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 15:57:04,144 - INFO - 127.0.0.1 - - [19/Dec/2025 15:57:04] "GET /health HTTP/1.1" 200 -
+2025-12-19 15:57:04,147 - INFO - 🏥 Chatbot Health: HEALTHY
+2025-12-19 15:57:04,148 - INFO - 127.0.0.1 - - [19/Dec/2025 15:57:04] "GET /api/chatbot-health HTTP/1.1" 200 -
+2025-12-19 15:59:13,280 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:13] "GET / HTTP/1.1" 200 -
+2025-12-19 15:59:13,342 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:13] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 15:59:13,344 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:13] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 15:59:13,347 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:13] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2025-12-19 15:59:13,358 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:13] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 15:59:13,479 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:13] "GET /health HTTP/1.1" 200 -
+2025-12-19 15:59:13,490 - INFO - 🏥 Chatbot Health: HEALTHY
+2025-12-19 15:59:13,492 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:13] "GET /api/chatbot-health HTTP/1.1" 200 -
+2025-12-19 15:59:20,342 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:20] "GET /editor HTTP/1.1" 200 -
+2025-12-19 15:59:20,405 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:20] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 15:59:20,411 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:20] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 15:59:20,414 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:20] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 15:59:20,492 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:20] "GET /api/schedule?offset=0&limit=20 HTTP/1.1" 200 -
+2025-12-19 15:59:22,304 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:22] "GET / HTTP/1.1" 200 -
+2025-12-19 15:59:22,411 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:22] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 15:59:22,416 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:22] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 15:59:22,420 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:22] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2025-12-19 15:59:22,425 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:22] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 15:59:22,510 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:22] "GET /health HTTP/1.1" 200 -
+2025-12-19 15:59:22,521 - INFO - 🏥 Chatbot Health: HEALTHY
+2025-12-19 15:59:22,522 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:22] "GET /api/chatbot-health HTTP/1.1" 200 -
+2025-12-19 15:59:24,012 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:24] "GET / HTTP/1.1" 200 -
+2025-12-19 15:59:24,079 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:24] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 15:59:24,084 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:24] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2025-12-19 15:59:24,088 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:24] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 15:59:24,096 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:24] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 15:59:24,146 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:24] "GET /health HTTP/1.1" 200 -
+2025-12-19 15:59:24,151 - INFO - 🏥 Chatbot Health: HEALTHY
+2025-12-19 15:59:24,152 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:24] "GET /api/chatbot-health HTTP/1.1" 200 -
+2025-12-19 15:59:26,198 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:26] "GET / HTTP/1.1" 200 -
+2025-12-19 15:59:26,261 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:26] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 15:59:26,268 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:26] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2025-12-19 15:59:26,273 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:26] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 15:59:26,276 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:26] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 15:59:26,339 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:26] "GET /health HTTP/1.1" 200 -
+2025-12-19 15:59:26,349 - INFO - 🏥 Chatbot Health: HEALTHY
+2025-12-19 15:59:26,351 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:26] "GET /api/chatbot-health HTTP/1.1" 200 -
+2025-12-19 15:59:28,104 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:28] "GET / HTTP/1.1" 200 -
+2025-12-19 15:59:28,167 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:28] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 15:59:28,170 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:28] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 15:59:28,176 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:28] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2025-12-19 15:59:28,180 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:28] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 15:59:28,227 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:28] "GET /health HTTP/1.1" 200 -
+2025-12-19 15:59:28,231 - INFO - 🏥 Chatbot Health: HEALTHY
+2025-12-19 15:59:28,232 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:28] "GET /api/chatbot-health HTTP/1.1" 200 -
+2025-12-19 15:59:33,090 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:33] "GET / HTTP/1.1" 200 -
+2025-12-19 15:59:33,203 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:33] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 15:59:33,205 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:33] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 15:59:33,212 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:33] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 15:59:33,214 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:33] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2025-12-19 15:59:33,294 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:33] "GET /health HTTP/1.1" 200 -
+2025-12-19 15:59:33,305 - INFO - 🏥 Chatbot Health: HEALTHY
+2025-12-19 15:59:33,306 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:33] "GET /api/chatbot-health HTTP/1.1" 200 -
+2025-12-19 15:59:38,216 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:38] "GET / HTTP/1.1" 200 -
+2025-12-19 15:59:38,272 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:38] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 15:59:38,272 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:38] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2025-12-19 15:59:38,275 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:38] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 15:59:38,344 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:38] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 15:59:38,353 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:38] "GET /health HTTP/1.1" 200 -
+2025-12-19 15:59:38,356 - INFO - 🏥 Chatbot Health: HEALTHY
+2025-12-19 15:59:38,357 - INFO - 127.0.0.1 - - [19/Dec/2025 15:59:38] "GET /api/chatbot-health HTTP/1.1" 200 -
+2025-12-19 16:00:09,413 - INFO - 127.0.0.1 - - [19/Dec/2025 16:00:09] "GET /dashboard HTTP/1.1" 200 -
+2025-12-19 16:00:09,524 - INFO - 127.0.0.1 - - [19/Dec/2025 16:00:09] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 16:00:09,529 - INFO - 127.0.0.1 - - [19/Dec/2025 16:00:09] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 16:00:09,537 - INFO - 127.0.0.1 - - [19/Dec/2025 16:00:09] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 16:00:13,703 - INFO - 127.0.0.1 - - [19/Dec/2025 16:00:13] "GET / HTTP/1.1" 200 -
+2025-12-19 16:00:13,765 - INFO - 127.0.0.1 - - [19/Dec/2025 16:00:13] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 16:00:13,772 - INFO - 127.0.0.1 - - [19/Dec/2025 16:00:13] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2025-12-19 16:00:13,774 - INFO - 127.0.0.1 - - [19/Dec/2025 16:00:13] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 16:00:13,779 - INFO - 127.0.0.1 - - [19/Dec/2025 16:00:13] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 16:00:13,884 - INFO - 🏥 Chatbot Health: HEALTHY
+2025-12-19 16:00:13,887 - INFO - 127.0.0.1 - - [19/Dec/2025 16:00:13] "GET /health HTTP/1.1" 200 -
+2025-12-19 16:00:13,888 - INFO - 127.0.0.1 - - [19/Dec/2025 16:00:13] "GET /api/chatbot-health HTTP/1.1" 200 -
+2025-12-19 16:00:14,889 - INFO - 127.0.0.1 - - [19/Dec/2025 16:00:14] "GET /viewer HTTP/1.1" 200 -
+2025-12-19 16:00:14,951 - INFO - 127.0.0.1 - - [19/Dec/2025 16:00:14] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 16:00:14,960 - INFO - 127.0.0.1 - - [19/Dec/2025 16:00:14] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 16:00:14,960 - INFO - 127.0.0.1 - - [19/Dec/2025 16:00:14] "GET /static/css/viewer.css HTTP/1.1" 200 -
+2025-12-19 16:00:14,966 - INFO - 127.0.0.1 - - [19/Dec/2025 16:00:14] "GET /static/js/viewer.js HTTP/1.1" 200 -
+2025-12-19 16:00:14,989 - INFO - 127.0.0.1 - - [19/Dec/2025 16:00:14] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 16:00:15,282 - INFO - 127.0.0.1 - - [19/Dec/2025 16:00:15] "GET /api/schedule?limit=10000 HTTP/1.1" 200 -
+2025-12-19 16:00:44,996 - INFO - 127.0.0.1 - - [19/Dec/2025 16:00:44] "GET /viewer HTTP/1.1" 200 -
+2025-12-19 16:00:45,102 - INFO - 127.0.0.1 - - [19/Dec/2025 16:00:45] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 16:00:45,107 - INFO - 127.0.0.1 - - [19/Dec/2025 16:00:45] "[36mGET /static/css/viewer.css HTTP/1.1[0m" 304 -
+2025-12-19 16:00:45,109 - INFO - 127.0.0.1 - - [19/Dec/2025 16:00:45] "[36mGET /static/js/viewer.js HTTP/1.1[0m" 304 -
+2025-12-19 16:00:45,113 - INFO - 127.0.0.1 - - [19/Dec/2025 16:00:45] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 16:00:45,180 - INFO - 127.0.0.1 - - [19/Dec/2025 16:00:45] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 16:00:45,458 - INFO - 127.0.0.1 - - [19/Dec/2025 16:00:45] "GET /api/schedule?limit=10000 HTTP/1.1" 200 -
+2025-12-19 16:01:25,893 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:25] "GET /viewer HTTP/1.1" 200 -
+2025-12-19 16:01:26,780 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:26] "[36mGET /static/js/viewer.js HTTP/1.1[0m" 304 -
+2025-12-19 16:01:26,781 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:26] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 16:01:26,783 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:26] "[36mGET /static/css/viewer.css HTTP/1.1[0m" 304 -
+2025-12-19 16:01:26,785 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:26] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 16:01:26,891 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:26] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 16:01:28,467 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:28] "GET /api/schedule?limit=10000 HTTP/1.1" 200 -
+2025-12-19 16:01:30,131 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:30] "GET / HTTP/1.1" 200 -
+2025-12-19 16:01:30,432 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:30] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 16:01:30,436 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:30] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 16:01:30,438 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:30] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 16:01:30,441 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:30] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2025-12-19 16:01:30,694 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:30] "GET /health HTTP/1.1" 200 -
+2025-12-19 16:01:30,705 - INFO - 🏥 Chatbot Health: HEALTHY
+2025-12-19 16:01:30,706 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:30] "GET /api/chatbot-health HTTP/1.1" 200 -
+2025-12-19 16:01:32,547 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:32] "GET /editor HTTP/1.1" 200 -
+2025-12-19 16:01:32,603 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:32] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 16:01:32,608 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:32] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 16:01:32,615 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:32] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 16:01:32,743 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:32] "GET /api/schedule?offset=0&limit=20 HTTP/1.1" 200 -
+2025-12-19 16:01:34,547 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:34] "GET /editor HTTP/1.1" 200 -
+2025-12-19 16:01:34,603 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:34] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 16:01:34,608 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:34] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 16:01:34,612 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:34] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 16:01:34,701 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:34] "GET /api/schedule?offset=0&limit=20 HTTP/1.1" 200 -
+2025-12-19 16:01:42,477 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:42] "GET /editor HTTP/1.1" 200 -
+2025-12-19 16:01:42,590 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:42] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 16:01:42,594 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:42] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 16:01:42,596 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:42] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 16:01:42,724 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:42] "GET /api/schedule?offset=0&limit=20 HTTP/1.1" 200 -
+2025-12-19 16:01:45,297 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:45] "GET / HTTP/1.1" 200 -
+2025-12-19 16:01:45,397 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:45] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 16:01:45,401 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:45] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 16:01:45,408 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:45] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 16:01:45,413 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:45] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2025-12-19 16:01:45,490 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:45] "GET /health HTTP/1.1" 200 -
+2025-12-19 16:01:45,501 - INFO - 🏥 Chatbot Health: HEALTHY
+2025-12-19 16:01:45,502 - INFO - 127.0.0.1 - - [19/Dec/2025 16:01:45] "GET /api/chatbot-health HTTP/1.1" 200 -
+2025-12-19 16:04:22,130 - INFO - 🏥 Chatbot Health: HEALTHY
+2025-12-19 16:04:22,131 - INFO - 127.0.0.1 - - [19/Dec/2025 16:04:22] "GET /api/chatbot-health HTTP/1.1" 200 -
+2025-12-19 16:04:35,549 - INFO - 📊 Chatbot status: Ready
+2025-12-19 16:04:35,550 - INFO - 127.0.0.1 - - [19/Dec/2025 16:04:35] "GET /api/chatbot-status HTTP/1.1" 200 -
+2025-12-19 16:08:47,024 - INFO - 127.0.0.1 - - [19/Dec/2025 16:08:47] "GET / HTTP/1.1" 200 -
+2025-12-19 16:08:47,113 - INFO - 127.0.0.1 - - [19/Dec/2025 16:08:47] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 16:08:47,114 - INFO - 127.0.0.1 - - [19/Dec/2025 16:08:47] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2025-12-19 16:08:47,117 - INFO - 127.0.0.1 - - [19/Dec/2025 16:08:47] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 16:08:47,118 - INFO - 127.0.0.1 - - [19/Dec/2025 16:08:47] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 16:08:47,609 - INFO - 127.0.0.1 - - [19/Dec/2025 16:08:47] "GET /health HTTP/1.1" 200 -
+2025-12-19 16:08:47,619 - INFO - 🏥 Chatbot Health: HEALTHY
+2025-12-19 16:08:47,620 - INFO - 127.0.0.1 - - [19/Dec/2025 16:08:47] "GET /api/chatbot-health HTTP/1.1" 200 -
+2025-12-19 16:08:49,040 - INFO - 127.0.0.1 - - [19/Dec/2025 16:08:49] "GET /dashboard HTTP/1.1" 200 -
+2025-12-19 16:08:49,114 - INFO - 127.0.0.1 - - [19/Dec/2025 16:08:49] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 16:08:49,118 - INFO - 127.0.0.1 - - [19/Dec/2025 16:08:49] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 16:08:49,292 - INFO - 127.0.0.1 - - [19/Dec/2025 16:08:49] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 16:08:53,106 - INFO - 127.0.0.1 - - [19/Dec/2025 16:08:53] "GET / HTTP/1.1" 200 -
+2025-12-19 16:08:53,176 - INFO - 127.0.0.1 - - [19/Dec/2025 16:08:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 16:08:53,181 - INFO - 127.0.0.1 - - [19/Dec/2025 16:08:53] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 16:08:53,189 - INFO - 127.0.0.1 - - [19/Dec/2025 16:08:53] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 16:08:53,190 - INFO - 127.0.0.1 - - [19/Dec/2025 16:08:53] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2025-12-19 16:08:53,236 - INFO - 127.0.0.1 - - [19/Dec/2025 16:08:53] "GET /health HTTP/1.1" 200 -
+2025-12-19 16:08:53,241 - INFO - 🏥 Chatbot Health: HEALTHY
+2025-12-19 16:08:53,242 - INFO - 127.0.0.1 - - [19/Dec/2025 16:08:53] "GET /api/chatbot-health HTTP/1.1" 200 -
+2025-12-19 16:08:54,106 - INFO - 127.0.0.1 - - [19/Dec/2025 16:08:54] "GET /viewer HTTP/1.1" 200 -
+2025-12-19 16:08:54,168 - INFO - 127.0.0.1 - - [19/Dec/2025 16:08:54] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 16:08:54,173 - INFO - 127.0.0.1 - - [19/Dec/2025 16:08:54] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 16:08:54,179 - INFO - 127.0.0.1 - - [19/Dec/2025 16:08:54] "[36mGET /static/js/viewer.js HTTP/1.1[0m" 304 -
+2025-12-19 16:08:54,182 - INFO - 127.0.0.1 - - [19/Dec/2025 16:08:54] "[36mGET /static/css/viewer.css HTTP/1.1[0m" 304 -
+2025-12-19 16:08:54,255 - INFO - 127.0.0.1 - - [19/Dec/2025 16:08:54] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 16:08:54,484 - INFO - 127.0.0.1 - - [19/Dec/2025 16:08:54] "GET /api/schedule?limit=10000 HTTP/1.1" 200 -
+2025-12-19 16:09:22,982 - DEBUG - 🔄 Updating record 7568 with payload: {'day_of_week': 'Saturday', 'start_time': '21:00'}
+2025-12-19 16:09:22,983 - WARNING - ⚠️  Record with session_id 7568 not found
+2025-12-19 16:09:22,983 - INFO - 127.0.0.1 - - [19/Dec/2025 16:09:22] "PATCH /api/schedule/7568 HTTP/1.1" 200 -
+2025-12-19 16:09:30,335 - DEBUG - 🔄 Updating record 7568 with payload: {'day_of_week': 'Thursday', 'start_time': '21:00'}
+2025-12-19 16:09:30,336 - WARNING - ⚠️  Record with session_id 7568 not found
+2025-12-19 16:09:30,336 - INFO - 127.0.0.1 - - [19/Dec/2025 16:09:30] "PATCH /api/schedule/7568 HTTP/1.1" 200 -
+2025-12-19 16:09:36,985 - INFO - 127.0.0.1 - - [19/Dec/2025 16:09:36] "GET / HTTP/1.1" 200 -
+2025-12-19 16:09:37,083 - INFO - 127.0.0.1 - - [19/Dec/2025 16:09:37] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-12-19 16:09:37,088 - INFO - 127.0.0.1 - - [19/Dec/2025 16:09:37] "[36mGET /static/js/translation.js HTTP/1.1[0m" 304 -
+2025-12-19 16:09:37,093 - INFO - 127.0.0.1 - - [19/Dec/2025 16:09:37] "[36mGET /static/css/home.css HTTP/1.1[0m" 304 -
+2025-12-19 16:09:37,098 - INFO - 127.0.0.1 - - [19/Dec/2025 16:09:37] "[36mGET /static/imgs/uma-logo.png HTTP/1.1[0m" 304 -
+2025-12-19 16:09:37,173 - INFO - 127.0.0.1 - - [19/Dec/2025 16:09:37] "GET /health HTTP/1.1" 200 -
+2025-12-19 16:09:37,184 - INFO - 🏥 Chatbot Health: HEALTHY
+2025-12-19 16:09:37,185 - INFO - 127.0.0.1 - - [19/Dec/2025 16:09:37] "GET /api/chatbot-health HTTP/1.1" 200 -

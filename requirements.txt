@@ -1,0 +1,15 @@
+# Core Web Framework
+Flask>=3.0.0
+
+# Data Manipulation & CSV Handling
+pandas>=2.1.0
+numpy>=1.26.0
+
+# Environment Variables (.env loading)
+python-dotenv>=1.0.0
+
+# AI / Chatbot (Required for Gemini integration in chatbot_logic.py)
+google-generativeai>=0.3.0
+
+# Production Server (Required for deployment, not used in local debug)
+gunicorn>=21.2.0

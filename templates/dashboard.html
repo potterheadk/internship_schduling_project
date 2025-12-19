@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UMA | Command Center</title>
+
+    <!-- Load Main Global Styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.js"></script>
+
+    <style>
+        /* --- 1. THEME: DEEP NEON GLASS --- */
+        :root {
+            --bg-core: #050509;
+            --glass-surface: rgba(18, 20, 32, 0.75);
+            --border-light: rgba(255, 255, 255, 0.08);
+
+            --neon-cyan: #06b6d4;
+            --neon-violet: #8b5cf6;
+            --neon-pink: #ec4899;
+            --neon-amber: #f59e0b;
+            --neon-green: #10b981;
+
+            --text-pri: #f8fafc;
+            --text-sec: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-core);
+            background-image: radial-gradient(circle at 50% 0%, rgba(6, 182, 212, 0.08), transparent 40%);
+            color: var(--text-pri);
+            font-family: 'Inter', system-ui, sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            overflow: hidden;
+        }
+
+        /* --- 2. SIDEBAR --- */
+        .sidebar {
+            width: 280px;
+            flex-shrink: 0;
+            background: rgba(10, 10, 16, 0.95);
+            border-right: 1px solid var(--border-light);
+            display: flex;
+            flex-direction: column;
+            padding: 25px 20px;
+            gap: 20px;
+            overflow-y: auto;
+            z-index: 20;
+        }
+
+        .brand h2 {
+            margin: 0;
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #fff;
+        }
+
+        .brand span {
+            color: var(--neon-cyan);
+        }
+
+        .brand p {
+            margin: 4px 0 0;
+            font-size: 0.75rem;
+            color: var(--text-sec);
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .control-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-sec);
+            font-weight: 700;
+        }
+
+        .input-dark {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-light);
+            color: var(--text-pri);
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        .input-dark:focus {
+            border-color: var(--neon-cyan);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        #timeSlider {
+            height: 6px;
+            background: #1e293b;
+            border: none;
+            margin-top: 10px;
+            border-radius: 3px;
+        }
+
+        .noUi-connect {
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-violet));
+        }
+
+        .noUi-handle {
+            width: 16px !important;
+            height: 16px !important;
+            border-radius: 50%;
+            background: #fff;
+            right: -8px !important;
+            top: -5px !important;
+            box-shadow: 0 0 10px var(--neon-cyan);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-exit {
+            margin-top: auto;
+            padding: 12px;
+            border-radius: 8px;
+            background: transparent;
+            border: 1px solid var(--border-light);
+            color: var(--text-sec);
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-exit:hover {
+            border-color: var(--neon-pink);
+            color: var(--neon-pink);
+            background: rgba(236, 72, 153, 0.1);
+        }
+
+        /* --- 3. MAIN CONTENT --- */
+        .main-content {
+            flex-grow: 1;
+            padding: 25px 30px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .page-title h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .page-title p {
+            margin: 5px 0 0;
+            color: var(--text-sec);
+            font-size: 0.9rem;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: var(--glass-surface);
+            border: 1px solid var(--border-light);
+            padding: 8px 15px;
+            border-radius: 30px;
+        }
+
+        .ekg-box {
+            width: 100px;
+            height: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* --- 4. BENTO GRID --- */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: minmax(120px, auto);
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--glass-surface);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .kpi-card {
+            justify-content: space-between;
+            height: 140px;
+        }
+
+        .kpi-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+        }
+
+        .kpi-icon {
+            font-size: 1.5rem;
+            color: var(--accent);
+            opacity: 0.8;
+        }
+
+        .kpi-value {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1;
+            margin-top: auto;
+        }
+
+        .kpi-label {
+            font-size: 0.8rem;
+            color: var(--text-sec);
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        .chart-card {
+            min-height: 320px;
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+            color: var(--text-sec);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .chart-wrapper {
+            flex-grow: 1;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 0;
+        }
+
+        .span-1 {
+            grid-column: span 1;
+        }
+
+        .span-2 {
+            grid-column: span 2;
+        }
+
+        .span-4 {
+            grid-column: span 4;
+        }
+
+        @media (max-width: 1200px) {
+            .dashboard-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .span-1,
+            .span-2 {
+                grid-column: span 1;
+            }
+
+            .span-4 {
+                grid-column: span 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                display: block;
+                overflow: auto;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .span-4 {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="sidebar">
+        <div class="brand">
+            <img src="{{ url_for('static', filename='imgs/uma-logo.png') }}" alt="UMA Logo" class="sidebar-logo">
+            <h2>UMA <span>STATS</span></h2>
+            
+        </div>
+
+        <div class="control-group">
+            <div class="control-label"><i class="ph ph-clock"></i> Active Window</div>
+            <div id="timeSlider"></div>
+            <div
+                style="display:flex; justify-content:space-between; margin-top:5px; font-size:0.7rem; color:var(--text-sec);">
+                <span id="tStart">07:00</span><span id="tEnd">22:00</span>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="control-label">Cycle</div>
+            <select id="cicloFilter" class="input-dark">
+                <option value="all">All Cycles</option>
+            </select>
+        </div>
+
+        <div class="control-group">
+            <div class="control-label">Activity Type</div>
+            <select id="activityFilter" class="input-dark">
+                <option value="all">All Activities</option>
+                <option value="virtual">Virtual</option>
+                <option value="lab">Lab</option>
+                <option value="theory">Theory</option>
+            </select>
+        </div>
+
+        <div class="control-group">
+            <div class="control-label">Department</div>
+            <select id="deptFilter" class="input-dark">
+                <option value="all">All Departments</option>
+            </select>
+        </div>
+
+        <div class="control-group">
+            <div class="control-label">Course Search</div>
+            <input type="text" id="courseInput" class="input-dark" placeholder="Type course name...">
+        </div>
+
+        <div class="control-group">
+            <div class="control-label">Day</div>
+            <select id="dayFilter" class="input-dark">
+                <option value="all">All Days</option>
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+            </select>
+        </div>
+
+        <button class="btn-exit" onclick="window.location.href='/'">
+            <i class="ph ph-sign-out"></i> Exit Dashboard
+        </button>
+
+        <button id="langToggle"
+            style="margin-left:0rem; margin-top: 10px; width: 100%; padding: 10px; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; cursor: pointer; transition: all 0.2s;">🇺🇸
+            EN</button>
+    </nav>
+
+    <main class="main-content">
+
+        <div class="header-bar">
+            <div class="page-title">
+                <h1>Operational Overview</h1>
+                <p>Real-time resource modeling</p>
+            </div>
+            <div class="status-indicator">
+                <div style="text-align:right; margin-right:10px;">
+                    <div style="font-size:0.75rem; color:var(--neon-green); font-weight:700;">LIVE</div>
+                    
+                </div>
+                <div class="ekg-box">
+                    <canvas id="ekgCanvas" width="100" height="30"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+
+            <div class="card kpi-card span-1" style="--accent: var(--neon-cyan);">
+                <div class="kpi-top"><i class="ph ph-files kpi-icon"></i></div>
+                <div class="kpi-value" id="kpiClasses">0</div>
+                <div class="kpi-label">Active Sessions</div>
+            </div>
+
+            <div class="card kpi-card span-1" style="--accent: var(--neon-violet);">
+                <div class="kpi-top"><i class="ph ph-globe kpi-icon"></i></div>
+                <div class="kpi-value" id="kpiVirtual">0%</div>
+                <div class="kpi-label">Virtualization Rate</div>
+            </div>
+
+            <div class="card kpi-card span-1" style="--accent: var(--neon-amber);">
+                <div class="kpi-top"><i class="ph ph-chart-bar kpi-icon"></i></div>
+                <div class="kpi-value" id="kpiPeak">-</div>
+                <div class="kpi-label">Peak Congestion</div>
+            </div>
+
+            <div class="card kpi-card span-1"
+                style="--accent: var(--neon-pink); border-color: rgba(236, 72, 153, 0.3);">
+                <div class="kpi-top"><i class="ph ph-warning kpi-icon"></i></div>
+                <div class="kpi-value" id="kpiConflict" style="color:var(--neon-pink);">0</div>
+                <div class="kpi-label" style="color:var(--neon-pink);">Unassigned Conflicts</div>
+            </div>
+
+            <div class="card chart-card span-2">
+                <div class="chart-header"><span><i class="ph ph-trend-up" style="color:var(--neon-cyan)"></i> Hourly
+                        Demand</span></div>
+                <div class="chart-wrapper"><canvas id="chartProjection"></canvas></div>
+            </div>
+
+            <div class="card chart-card span-2">
+                <div class="chart-header"><span><i class="ph ph-squares-four" style="color:var(--neon-violet)"></i>
+                        Classroom Density (Top 10)</span></div>
+                <div class="chart-wrapper"><canvas id="chartHeatmap"></canvas></div>
+            </div>
+
+            <div class="card chart-card span-2">
+                <div class="chart-header"><span><i class="ph ph-users-three" style="color:var(--neon-green)"></i>
+                        Faculty Workload</span></div>
+                <div class="chart-wrapper"><canvas id="chartWorkload"></canvas></div>
+            </div>
+
+            <div class="card chart-card span-1">
+                <div class="chart-header"><span><i class="ph ph-chart-pie" style="color:var(--neon-amber)"></i>
+                        Modality</span></div>
+                <div class="chart-wrapper"><canvas id="chartModality"></canvas></div>
+            </div>
+
+            <div class="card chart-card span-1">
+                <div class="chart-header"><span><i class="ph ph-steps" style="color:var(--neon-pink)"></i> Cycle
+                        Load</span></div>
+                <div class="chart-wrapper"><canvas id="chartCiclo"></canvas></div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        const rawData = {{ viz_data | safe }};
+        const records = rawData.records || [];
+        let charts = {};
+        let timeWindow = [7, 22];
+
+        // EKG
+        (function initEKG() {
+            const cvs = document.getElementById('ekgCanvas');
+            const ctx = cvs.getContext('2d');
+            let x = 0;
+            function draw() {
+                ctx.fillStyle = 'rgba(5,5,9,0.2)'; ctx.fillRect(0, 0, cvs.width, cvs.height);
+                ctx.beginPath(); ctx.moveTo(x, 15); x += 2;
+                let y = 15; if (x % 50 > 5 && x % 50 < 10) y = 5; else if (x % 50 > 10 && x % 50 < 15) y = 25;
+                ctx.lineTo(x, y); ctx.strokeStyle = '#10b981'; ctx.lineWidth = 2; ctx.stroke();
+                if (x > cvs.width) x = 0; requestAnimationFrame(draw);
+            }
+            draw();
+        })();
+
+        // Init
+        document.addEventListener("DOMContentLoaded", () => {
+            initControls();
+            updateViz();
+            ['cicloFilter', 'deptFilter', 'dayFilter', 'activityFilter'].forEach(id => document.getElementById(id).addEventListener('change', updateViz));
+            document.getElementById('courseInput').addEventListener('input', updateViz);
+        });
+
+        function initControls() {
+            const populate = (id, key) => {
+                const el = document.getElementById(id);
+                const vals = [...new Set(records.map(r => r[key]))].filter(v => v && v != 'Unknown').sort((a, b) => (typeof a === 'number' ? a - b : a.localeCompare(b)));
+                vals.forEach(v => el.add(new Option(key === 'n_ciclo' ? `Cycle ${v}` : v, v)));
+            };
+            populate('deptFilter', 'nomesp'); populate('cicloFilter', 'n_ciclo');
+            const slider = document.getElementById('timeSlider');
+            noUiSlider.create(slider, { start: [7, 22], connect: true, range: { 'min': 6, 'max': 23 }, step: 1 });
+            slider.noUiSlider.on('update', (v) => {
+                timeWindow = [parseInt(v[0]), parseInt(v[1])];
+                document.getElementById('tStart').textContent = `${timeWindow[0]}:00`;
+                document.getElementById('tEnd').textContent = `${timeWindow[1]}:00`;
+            });
+            slider.noUiSlider.on('set', updateViz);
+        }
+
+        function updateViz() {
+            const fCiclo = document.getElementById('cicloFilter').value, fDept = document.getElementById('deptFilter').value;
+            const fDay = document.getElementById('dayFilter').value, fAct = document.getElementById('activityFilter').value;
+            const fCourse = document.getElementById('courseInput').value.toLowerCase();
+
+            const data = records.filter(r => {
+                return r.start_hour_int >= timeWindow[0] && r.start_hour_int < timeWindow[1] &&
+                    (!fCourse || (r.c_nomcur && r.c_nomcur.toLowerCase().includes(fCourse))) &&
+                    (fCiclo == 'all' || r.n_ciclo == fCiclo) && (fDept == 'all' || r.nomesp == fDept) &&
+                    (fDay == 'all' || r.day_of_week == fDay) && (fAct == 'all' || r.activity_type.includes(fAct));
+            });
+
+            document.getElementById('kpiClasses').innerText = data.length.toLocaleString();
+            const vCount = data.filter(r => r.activity_type.includes('virtual')).length;
+            document.getElementById('kpiVirtual').innerText = data.length ? ((vCount / data.length) * 100).toFixed(1) + '%' : '0%';
+            document.getElementById('kpiConflict').innerText = data.filter(r => r.room_id.toLowerCase().includes('unassigned')).length;
+            const hc = {}; data.forEach(r => hc[r.start_hour_int] = (hc[r.start_hour_int] || 0) + 1);
+            const peak = Object.keys(hc).reduce((a, b) => hc[a] > hc[b] ? a : b, 0);
+            document.getElementById('kpiPeak').innerText = peak ? `${peak}:00` : '-';
+
+            drawCharts(data);
+        }
+
+        // Chart Logic
+        const commonOpts = { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { grid: { display: false }, ticks: { color: '#64748b' } }, y: { grid: { color: 'rgba(255,255,255,0.03)' }, ticks: { color: '#64748b' } } } };
+        function drawCharts(data) {
+            const hours = []; for (let h = timeWindow[0]; h < timeWindow[1]; h++) hours.push(h);
+            const d = { v: [], l: [], t: [] };
+            hours.forEach(h => {
+                const chunk = data.filter(r => r.start_hour_int === h);
+                d.v.push(chunk.filter(r => r.activity_type.includes('virtual')).length);
+                d.l.push(chunk.filter(r => r.activity_type.includes('lab')).length);
+                d.t.push(chunk.filter(r => !r.activity_type.includes('virtual') && !r.activity_type.includes('lab')).length);
+            });
+            updateChart('chartProjection', 'line', {
+                labels: hours.map(h => `${h}:00`),
+                datasets: [
+                    { data: d.v, borderColor: '#8b5cf6', backgroundColor: 'rgba(139,92,246,0.3)', fill: true, tension: 0.4, pointRadius: 0 },
+                    { data: d.l, borderColor: '#06b6d4', backgroundColor: 'rgba(6,182,212,0.3)', fill: true, tension: 0.4, pointRadius: 0 },
+                    { data: d.t, borderColor: '#f59e0b', backgroundColor: 'transparent', borderDash: [4, 4], tension: 0.4, pointRadius: 0 }
+                ]
+            }, { interaction: { mode: 'index', intersect: false } });
+
+            const rooms = {}; data.forEach(r => { if (!r.room_id.toUpperCase().includes('VIRTUAL') && !r.room_id.toUpperCase().includes('UNASSIGNED')) rooms[r.room_id] = (rooms[r.room_id] || 0) + 1; });
+            const topR = Object.keys(rooms).sort((a, b) => rooms[b] - rooms[a]).slice(0, 10);
+            const grid = []; topR.forEach((rm, y) => { for (let h = timeWindow[0]; h < timeWindow[1]; h++) { if (data.some(r => r.room_id === rm && r.start_hour_int === h)) grid.push({ x: h, y: y, r: 5 }); } });
+            updateChart('chartHeatmap', 'bubble', { datasets: [{ data: grid, backgroundColor: 'rgba(139,92,246,0.6)', borderWidth: 0 }] }, { scales: { x: { min: timeWindow[0] - 0.5, max: timeWindow[1] - 0.5, display: false }, y: { type: 'category', labels: topR, ticks: { color: '#94a3b8' } } } });
+
+            const load = {}; data.forEach(r => { if (r.teacher_names != 'TBA') load[r.teacher_names] = (load[r.teacher_names] || 0) + (r.duration || 1) });
+            const b = [0, 0, 0, 0]; Object.values(load).forEach(l => { if (l <= 4) b[0]++; else if (l <= 8) b[1]++; else if (l <= 12) b[2]++; else b[3]++; });
+            updateChart('chartWorkload', 'bar', { labels: ['Low', 'Med', 'High', 'Max'], datasets: [{ data: b, backgroundColor: ['#10b981', '#06b6d4', '#f59e0b', '#f43f5e'], borderRadius: 4 }] });
+
+            const mod = { v: 0, l: 0, t: 0 }; data.forEach(r => { if (r.activity_type.includes('virtual')) mod.v++; else if (r.activity_type.includes('lab')) mod.l++; else mod.t++; });
+            updateChart('chartModality', 'doughnut', { labels: ['Virtual', 'Lab', 'Theory'], datasets: [{ data: [mod.v, mod.l, mod.t], backgroundColor: ['#8b5cf6', '#06b6d4', '#f59e0b'], borderWidth: 0 }] }, { cutout: '70%' });
+
+            const cyc = {}; data.forEach(r => { if (r.n_ciclo > 0) cyc[r.n_ciclo] = (cyc[r.n_ciclo] || 0) + 1 });
+            const k = Object.keys(cyc).sort((a, b) => a - b);
+            updateChart('chartCiclo', 'bar', { labels: k.map(c => `C${c}`), datasets: [{ data: k.map(c => cyc[c]), backgroundColor: '#ec4899', borderRadius: 3 }] });
+        }
+
+        function updateChart(id, type, data, extra = {}) {
+            const ctx = document.getElementById(id).getContext('2d');
+            if (charts[id]) charts[id].destroy();
+            charts[id] = new Chart(ctx, { type, data, options: { ...commonOpts, ...extra } });
+        }
+    </script>
+
+    <!-- Google Translation script -->
+    <script src="{{ url_for('static', filename='js/translation.js') }}"></script>
+</body>
+
+</html>

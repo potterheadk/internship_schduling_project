@@ -1,0 +1,52 @@
+2025-12-18 03:50:33,969 [BOT] INFO: ======================================================================
+2025-12-18 03:50:33,969 [BOT] INFO: 🤖 ScheduleChatbot Initializing (Router & Tools Architecture)
+2025-12-18 03:50:33,969 [BOT] INFO: ======================================================================
+2025-12-18 03:50:33,969 [BOT] DEBUG: Loading schedule from: Output/final_schedule.csv
+2025-12-18 03:50:34,054 [BOT] DEBUG: ✅ All time values parsed successfully
+2025-12-18 03:50:34,054 [BOT] DEBUG: Building lookup indexes...
+2025-12-18 03:50:34,947 [BOT] INFO: ✅ Indexes built: 119 teachers, 39 rooms, 275 courses
+2025-12-18 03:50:34,948 [BOT] INFO: ✅ Data Loaded: 7573 records
+2025-12-18 03:50:34,948 [BOT] DEBUG:    Columns: ['session_id', 'n_codper', 'admission_entry', 'start_period', 'end_period', 'c_codesp', 'nomesp', 'n_ciclo']...
+2025-12-18 03:50:34,949 [BOT] DEBUG:    Days: ['Friday', 'Monday', 'Saturday', 'Thursday', 'Tuesday', 'Unassigned', 'Wednesday']
+2025-12-18 03:50:34,950 [BOT] DEBUG:    Unique rooms: 39
+2025-12-18 03:50:34,951 [BOT] DEBUG:    Unique teachers: 119
+2025-12-18 03:50:34,951 [BOT] INFO: ✅ Brain (Gemini 2.5 Flash) Online - Router & Synthesizer Ready
+2025-12-18 03:52:12,856 [BOT] INFO: ======================================================================
+2025-12-18 03:52:12,856 [BOT] INFO: 🤖 ScheduleChatbot Initializing (Router & Tools Architecture)
+2025-12-18 03:52:12,856 [BOT] INFO: ======================================================================
+2025-12-18 03:52:12,856 [BOT] DEBUG: Loading schedule from: Output/final_schedule.csv
+2025-12-18 03:52:12,940 [BOT] DEBUG: ✅ All time values parsed successfully
+2025-12-18 03:52:12,940 [BOT] DEBUG: Building lookup indexes...
+2025-12-18 03:52:13,910 [BOT] INFO: ✅ Indexes built: 119 teachers, 39 rooms, 275 courses
+2025-12-18 03:52:13,911 [BOT] INFO: ✅ Data Loaded: 7573 records
+2025-12-18 03:52:13,911 [BOT] DEBUG:    Columns: ['session_id', 'n_codper', 'admission_entry', 'start_period', 'end_period', 'c_codesp', 'nomesp', 'n_ciclo']...
+2025-12-18 03:52:13,912 [BOT] DEBUG:    Days: ['Friday', 'Monday', 'Saturday', 'Thursday', 'Tuesday', 'Unassigned', 'Wednesday']
+2025-12-18 03:52:13,914 [BOT] DEBUG:    Unique rooms: 39
+2025-12-18 03:52:13,914 [BOT] DEBUG:    Unique teachers: 119
+2025-12-18 03:52:13,914 [BOT] INFO: ✅ Brain (Gemini 2.5 Flash) Online - Router & Synthesizer Ready
+2025-12-18 03:52:21,494 [BOT] INFO: 
+======================================================================
+2025-12-18 03:52:21,495 [BOT] INFO: 📩 User Query: hi
+2025-12-18 03:52:21,495 [BOT] INFO: ======================================================================
+2025-12-18 03:52:21,496 [BOT] DEBUG: 🧠 Routing query with Gemini...
+2025-12-18 03:52:23,399 [BOT] DEBUG: ✅ JSON parsed successfully on attempt 1
+2025-12-18 03:52:23,399 [BOT] INFO: ✅ Intent: greeting | Entities: ['day', 'time', 'room', 'room_type', 'course', 'teacher']
+2025-12-18 03:52:23,401 [BOT] DEBUG: Intent: greeting | Entities: {'day': None, 'time': None, 'room': None, 'room_type': None, 'course': None, 'teacher': None}
+2025-12-18 03:52:23,401 [BOT] INFO: ✅ Greeting detected
+2025-12-19 15:53:03,006 [BOT] INFO: ======================================================================
+2025-12-19 15:53:03,007 [BOT] INFO: 🤖 ScheduleChatbot Initializing (Router & Tools Architecture)
+2025-12-19 15:53:03,008 [BOT] INFO: ======================================================================
+2025-12-19 15:53:03,008 [BOT] DEBUG: Loading schedule from: Output/final_schedule.csv
+2025-12-19 15:53:03,082 [BOT] DEBUG: ✅ All time values parsed successfully
+2025-12-19 15:53:03,083 [BOT] DEBUG: Building lookup indexes...
+2025-12-19 15:53:03,919 [BOT] INFO: ✅ Indexes built: 119 teachers, 39 rooms, 275 courses
+2025-12-19 15:53:03,920 [BOT] INFO: ✅ Data Loaded: 7573 records
+2025-12-19 15:53:03,920 [BOT] DEBUG:    Columns: ['session_id', 'n_codper', 'admission_entry', 'start_period', 'end_period', 'c_codesp', 'nomesp', 'n_ciclo']...
+2025-12-19 15:53:03,921 [BOT] DEBUG:    Days: ['Friday', 'Monday', 'Saturday', 'Thursday', 'Tuesday', 'Unassigned', 'Wednesday']
+2025-12-19 15:53:03,922 [BOT] DEBUG:    Unique rooms: 39
+2025-12-19 15:53:03,923 [BOT] DEBUG:    Unique teachers: 119
+2025-12-19 15:53:03,923 [BOT] INFO: ✅ Brain (Gemini 2.5 Flash) Online - Router & Synthesizer Ready
+2025-12-19 16:09:22,982 [BOT] DEBUG: 🔄 Updating record 7568 with payload: {'day_of_week': 'Saturday', 'start_time': '21:00'}
+2025-12-19 16:09:22,983 [BOT] WARNING: ⚠️  Record with session_id 7568 not found
+2025-12-19 16:09:30,335 [BOT] DEBUG: 🔄 Updating record 7568 with payload: {'day_of_week': 'Thursday', 'start_time': '21:00'}
+2025-12-19 16:09:30,336 [BOT] WARNING: ⚠️  Record with session_id 7568 not found

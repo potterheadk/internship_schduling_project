@@ -1,0 +1,93 @@
+{
+  "20261|PNYD3041|A|theory": {
+    "day_of_week": "Thursday",
+    "start_time": "17:00"
+  },
+  "20251|SFBQ3052|M4|virtual": {
+    "day_of_week": "Thursday",
+    "start_time": "07:00"
+  },
+  "20251|SFBQ3041|M7|lab": {
+    "day_of_week": "Thursday",
+    "start_time": "07:00"
+  },
+  "20251|SFBQ3052|N1|lab": {
+    "day_of_week": "Thursday",
+    "start_time": "07:00"
+  },
+  "20251|FYB0602|N2|virtual": {
+    "day_of_week": "Monday",
+    "start_time": "19:00"
+  },
+  "20251|SFBQ3064|N2|virtual": {
+    "day_of_week": "Saturday",
+    "start_time": "19:00"
+  },
+  "20261|SFBQ3054|B|virtual": {
+    "day_of_week": "Wednesday",
+    "start_time": "06:00"
+  },
+  "20261|ENF0504|F|virtual": {
+    "day_of_week": "Thursday",
+    "start_time": "21:00"
+  },
+  "20261|FYB0505|A|lab": {
+    "day_of_week": "Saturday",
+    "start_time": "21:00"
+  },
+  "20261|STMT2052|A|theory": {
+    "day_of_week": "Monday",
+    "start_time": "07:00",
+    "room_id": "03-CL-03-XS"
+  },
+  "20261|ENF0504|E|virtual": {
+    "day_of_week": "Saturday",
+    "start_time": "20:00"
+  },
+  "20261|ENF0504|A|virtual": {
+    "day_of_week": "Wednesday",
+    "start_time": "20:00"
+  },
+  "20252|CTT0902|N1|virtual": {
+    "day_of_week": "Monday",
+    "start_time": "17:00"
+  },
+  "20261|DESG1013|A|virtual": {
+    "day_of_week": "Wednesday",
+    "start_time": "21:00"
+  },
+  "20261|DESG1011|A|virtual": {
+    "day_of_week": "Wednesday",
+    "start_time": "21:00"
+  },
+  "20261|DESG1014|D|virtual": {
+    "day_of_week": "Tuesday",
+    "start_time": "21:00"
+  },
+  "20251|CTT1001|N1|lab": {
+    "day_of_week": "Monday",
+    "start_time": "08:00",
+    "room_id": "05-LB-02-XS"
+  },
+  "20261|PFBQ5011|B|lab": {
+    "day_of_week": "Tuesday",
+    "start_time": "07:00",
+    "room_id": "04-LB-02-SM"
+  },
+  "20251|SESG3011|NS2|lab": {
+    "day_of_week": "Tuesday",
+    "start_time": "07:00"
+  },
+  "20251|SESG3012|MS2|virtual": {
+    "day_of_week": "Tuesday",
+    "start_time": "07:00"
+  },
+  "20262|||theory": {
+    "day_of_week": "Monday",
+    "start_time": "20:00"
+  },
+  "20261|STML2053|B|virtual": {
+    "day_of_week": "Thursday",
+    "start_time": "21:00"
+  }
+}

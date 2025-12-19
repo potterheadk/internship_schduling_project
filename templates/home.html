@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UMA Scheduler | Home</title>
+
+    <!-- Load Main Global Styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Load Home Specific Styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+
+</head>
+
+<body>
+
+    <div class="app-shell">
+
+        <!-- Navigation Header -->
+        <header class="app-header">
+            <img src="{{ url_for('static', filename='imgs/uma-logo.png') }}" alt="UMA Logo" class="header-logo">
+            <nav class="nav-tabs">
+                <a href="/" class="nav-tab active">Home</a>
+                <a href="/dashboard" class="nav-tab">Dashboard</a> <!-- NEW TAB -->
+                <a href="/viewer" class="nav-tab">Viewer</a>
+                <a href="/editor" class="nav-tab">Editor</a>
+            </nav>
+            <button id="langToggle"
+                    style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.15); color: #fff; cursor: pointer; padding: 8px 14px; border-radius: 6px; font-size: 0.9rem; transition: all 0.2s ease;">🇺🇸
+                    EN</button>
+        </header>
+
+        <!-- Main Content -->
+        <main class="app-main home-container">
+
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="hero-badge">Academic Year 2025</div>
+                <h1 class="hero-title">Master Your Schedule</h1>
+                <p class="hero-subtitle">
+                    Centralized platform for visualizing academic timetables, managing conflicts,
+                    and editing session data in real-time.
+                </p>
+            </section>
+
+            <!-- Navigation Grid -->
+            <section class="nav-grid">
+
+                <!-- Card 1: Schedule Viewer -->
+                <a href="/viewer" class="nav-card panel">
+                    <div class="card-content">
+                        <div class="card-icon icon-blue">
+                            <i class="ph ph-calendar-blank" style="font-size: 28px;"></i>
+                        </div>
+                        <h3>Schedule Viewer</h3>
+                        <p>Interactive weekly calendar. Filter by teacher, room, or course to detect conflicts and
+                            virtual sessions.</p>
+                    </div>
+                    <div class="card-action">
+                        Launch Viewer <span class="arrow">&rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Card 2: Manual Editor -->
+                <a href="/editor" class="nav-card panel">
+                    <div class="card-content">
+                        <div class="card-icon icon-green">
+                            <i class="ph ph-pencil-simple" style="font-size: 28px;"></i>
+                        </div>
+                        <h3>Data Editor</h3>
+                        <p>Perform CRUD operations. Manually fix assignments, update room numbers, and manage session
+                            details.</p>
+                    </div>
+                    <div class="card-action text-green">
+                        Open Editor <span class="arrow">&rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Card 3: Admin / System -->
+                <div class="nav-card panel">
+                    <div class="card-content">
+                        <div class="card-icon icon-red">
+                            <i class="ph ph-gear" style="font-size: 28px;"></i>
+                        </div>
+                        <h3>System Admin</h3>
+                        <p>
+                            Status: <span id="status-indicator" class="status-loading">Checking...</span><br>
+                            Regenerate the final schedule from raw CSV sources.
+                        </p>
+                    </div>
+                    <div class="card-action no-hover">
+                        <button id="regenBtn" class="btn-primary btn-full">
+                            ⭮ Regenerate Data
+                        </button>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Analytics / Footer Area -->
+            <section class="quick-stats">
+                <div class="stat-pill">
+                    <span class="dot active"></span> System Online
+                </div>
+                <div class="stat-pill">
+                    <span class="dot info"></span> v1.0.4 Stable
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="app-footer">
+            &copy; 2025 UMA Unified Schedule System. All rights reserved.
+        </footer>
+
+    </div>
+
+    <!-- ==================== CHATBOT WIDGET ==================== -->
+    <div class="chatbot-container">
+        <!-- Chat Toggle Button -->
+        <button id="chatToggleBtn" class="chat-toggle-btn">
+            <i class="ph ph-chat-teardrop-text"></i>
+            <!-- Optional notification dot -->
+            <span id="chatNotify" class="chat-notification-dot hidden"></span>
+        </button>
+
+        <!-- Chat Window -->
+        <div id="chatWindow" class="chat-window hidden">
+            <div class="chat-header">
+                <div class="chat-header-title">
+                    <i class="ph ph-robot" style="font-size: 20px; color: var(--accent);"></i>
+                    <span>Scheduler AI Agent</span>
+                </div>
+                <button id="chatCloseBtn" class="chat-close-btn"><i class="ph ph-x"></i></button>
+            </div>
+
+            <div id="chatMessages" class="chat-messages">
+                <!-- Welcome Message -->
+                <div class="message bot-message">
+                    Hello! I'm your Schedule Assistant. 🤖<br>
+                    You can ask me about:
+                    <ul style="margin: 5px 0 0 15px; padding: 0;">
+                        <li>Teacher workloads</li>
+                        <li>Room availability</li>
+                        <li>Specific course details</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="Ask a question..." autocomplete="off">
+                <button id="chatSendBtn"><i class="ph ph-paper-plane-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- LOGIC -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            // --- 1. System Health Check (Existing Logic) ---
+            const statusEl = document.getElementById('status-indicator');
+            fetch('/health')
+                .then(r => r.json())
+                .then(data => {
+                    if (data.status === 'ok') {
+                        statusEl.innerHTML = '<span style="color:var(--success)">● Online</span>';
+                    } else {
+                        statusEl.innerHTML = '<span style="color:var(--danger)">● Offline</span>';
+                    }
+                })
+                .catch(() => statusEl.textContent = "Error");
+
+            // --- 2. Regenerate Logic (Existing Logic) ---
+            const regenBtn = document.getElementById('regenBtn');
+            regenBtn.addEventListener('click', async (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+
+                if (!confirm("⚠️ Warning: Regenerating will overwrite all manual edits in final_schedule.csv.\n\nAre you sure?")) return;
+
+                const originalText = regenBtn.innerHTML;
+                regenBtn.innerHTML = "Processing...";
+                regenBtn.disabled = true;
+                regenBtn.style.opacity = "0.7";
+
+                try {
+                    const res = await fetch('/regenerate', { method: 'POST' });
+                    const data = await res.json();
+                    if (res.ok) {
+                        alert("✅ Success: Schedule regenerated.");
+                        window.location.reload();
+                    } else {
+                        alert("❌ Error: " + (data.message || "Unknown error"));
+                    }
+                } catch (err) {
+                    alert("❌ Network Error");
+                    console.error(err);
+                } finally {
+                    regenBtn.innerHTML = originalText;
+                    regenBtn.disabled = false;
+                    regenBtn.style.opacity = "1";
+                }
+            });
+
+            // --- 3. Chatbot Logic (New) ---
+            const chatToggleBtn = document.getElementById('chatToggleBtn');
+            const chatWindow = document.getElementById('chatWindow');
+            const chatCloseBtn = document.getElementById('chatCloseBtn');
+            const chatInput = document.getElementById('chatInput');
+            const chatSendBtn = document.getElementById('chatSendBtn');
+            const chatMessages = document.getElementById('chatMessages');
+
+            // Initial Health Check for Chatbot
+            fetch('/api/chatbot-health')
+                .then(r => r.json())
+                .then(data => {
+                    if (data.status === 'offline' || data.error) {
+                        // Chatbot unavailable
+                        const warningDiv = document.createElement('div');
+                        warningDiv.className = 'message bot-message';
+                        warningDiv.style.border = '1px solid var(--danger)';
+                        warningDiv.textContent = '⚠️ Chatbot is offline. Please check API keys or run scheduler.';
+                        chatMessages.appendChild(warningDiv);
+                        chatInput.disabled = true;
+                        chatInput.placeholder = "System unavailable";
+                    }
+                });
+
+            // Toggle Window Visibility
+            chatToggleBtn.addEventListener('click', () => {
+                chatWindow.classList.toggle('hidden');
+                if (!chatWindow.classList.contains('hidden')) {
+                    setTimeout(() => {
+                        chatInput.focus();
+                        scrollToBottom();
+                    }, 100);
+                }
+            });
+
+            chatCloseBtn.addEventListener('click', () => {
+                chatWindow.classList.add('hidden');
+            });
+
+            // Messaging Logic
+            async function sendMessage() {
+                const text = chatInput.value.trim();
+                if (!text) return;
+
+                // 1. Add User Message
+                addMessage('user', text);
+                chatInput.value = '';
+                chatInput.disabled = true;
+
+                // 2. Show Loading Dots
+                const loadingId = addLoadingIndicator();
+
+                try {
+                    // 3. Send to API
+                    const res = await fetch('/api/chat', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ question: text })
+                    });
+                    const data = await res.json();
+
+                    // 4. Remove Loading & Show Response
+                    removeLoadingIndicator(loadingId);
+
+                    if (data.error) {
+                        addMessage('bot', '❌ Error: ' + data.error);
+                    } else {
+                        addMessage('bot', data.response);
+                    }
+                } catch (e) {
+                    removeLoadingIndicator(loadingId);
+                    addMessage('bot', '❌ Network error. Please check console.');
+                    console.error(e);
+                } finally {
+                    chatInput.disabled = false;
+                    chatInput.focus();
+                }
+            }
+
+            // Event Listeners for Sending
+            chatSendBtn.addEventListener('click', sendMessage);
+            chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') sendMessage();
+            });
+
+            // Helper: Add Message Bubble
+            function addMessage(sender, text) {
+                const div = document.createElement('div');
+                div.className = `message ${sender}-message`;
+                // Use innerHTML responsibly or textContent to prevent XSS. 
+                // Since bot might return formatting, we use innerHTML but sanitize basic text.
+                div.innerHTML = text.replace(/\n/g, '<br>');
+                chatMessages.appendChild(div);
+                scrollToBottom();
+            }
+
+            // Helper: Loading Indicator
+            function addLoadingIndicator() {
+                const id = 'loading-' + Date.now();
+                const div = document.createElement('div');
+                div.id = id;
+                div.className = 'message bot-message loading-msg';
+                div.innerHTML = '<span>•</span><span>•</span><span>•</span>';
+                chatMessages.appendChild(div);
+                scrollToBottom();
+                return id;
+            }
+
+            function removeLoadingIndicator(id) {
+                const el = document.getElementById(id);
+                if (el) el.remove();
+            }
+
+            function scrollToBottom() {
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        });
+    </script>
+
+    <!-- Google Translation script -->
+    <script src="{{ url_for('static', filename='js/translation.js') }}"></script>
+
+</body>
+
+</html>
