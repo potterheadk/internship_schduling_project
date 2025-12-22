@@ -61,11 +61,11 @@ The top bar contains high-level controls. Use the **Admin: Regenerate** button o
 ### The Weekly Grid
 The main view displays a 6-day academic week.
 * **Session Cards:** Each block represents a class (e.g., *SAYM3055*).
-**Color Legend:**
-* 🟦 **Lab:** Physical laboratory sessions.
-* 🟩 **Theory:** Standard classroom lectures.
-* 🟧 **Virtual:** Online/Remote sessions.
-* 🟥 **Conflict:** Sessions with overlap errors.
+* **Color Legend:**
+    * 🟦 **Lab:** Physical laboratory sessions.
+    * 🟩 **Theory:** Standard classroom lectures.
+    * 🟧 **Virtual:** Online/Remote sessions.
+    * 🟥 **Conflict:** Sessions with overlap errors.
 
 ![Viewer Grid](assets/screenshots/viewer_grid.jpg)
 *Figure 3b: The interactive timetable grid.*
