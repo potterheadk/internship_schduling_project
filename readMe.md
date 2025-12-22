@@ -16,7 +16,7 @@ An intelligent university scheduling system featuring an automated engine, a dra
 ```bash
 # Clone the repository
 https://github.com/potterheadk/internship_schduling_project.git
-cd your-repo-name
+cd internship_schduling_project
 
 # Create a virtual environment
 python -m venv venv
@@ -95,6 +95,7 @@ When you move a class using the **Drag & Drop Viewer** or the **Editor**, the ap
 *   **Chatbot is disabled:** Ensure your `GOOGLE_API_KEY` is valid in the `.env` file and that you have an internet connection.
 *   **CSV Not Found:** Ensure your `scheduler_engine.py` is correctly configured to output to the path defined as `OUTPUT_CSV`.
 *   **Port Conflict:** If port `5050` is busy, change the `port=5050` line at the bottom of `app.py`.
+
 
 
 
